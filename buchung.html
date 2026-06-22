@@ -296,11 +296,20 @@
               <span class="date-desc">Intuitives Malen – Lass dich von Farben leiten, ganz ohne Vorkenntnisse. Material inklusive. Weitere Informationen findest du auf meiner Instagramseite</span>
               <span class="date-loc">📍71404 Korb (Die genaue Adresse erhältst du nach deiner Anmeldung.) </span>
             </span>
-            <span class="date-price">43,00 €</span>
-            <span class="date-tag">3 Std.</span>
+            </span>
+            <span class="date-meta">
+              <span class="date-price">49,00 €</span>
+              <span class="date-tag">3 Std.</span>
+              <span class="date-incl">inkl. Material</span>
+            </span>
           </label>
         </div>
 
+      </div>
+
+      <!-- Preishinweis -->
+      <div class="price-info">
+        <strong>Zahlung</strong> nach Anmeldungsbestätigung per PayPal oder Überweisung. Dein Platz ist erst nach Zahlungseingang gesichert.
       </div>
 
       <!-- Persönliche Angaben -->
@@ -336,16 +345,35 @@
 
     </form>
 
-    <!-- Erfolgsmeldung (wird nach dem Absenden angezeigt) -->
+    <!-- Erfolgsmeldung + Zahlungsschritt -->
     <div class="success-msg" id="successMsg">
-      <div class="success-icon">🎨</div>
-      <p class="success-title">Danke für deine Anmeldung!</p>
-      <p class="success-text">
-        Wir haben deine Anfrage erhalten und melden uns in Kürze per E-Mail bei dir.<br><br>
-        Ich freue mich sehr darauf, gemeinsam zu malen.<br><br>
-        Liebe Grüße<br>
-        Madita
-      </p>
+ 
+      <div class="success-step">
+        <div class="success-icon">✓</div>
+        <p class="success-title">Anmeldung erhalten!</p>
+        <p class="success-text">
+          Du erhältst in Kürze eine Bestätigungs-E-Mail von mir.<br>
+          Bitte schließe jetzt deine Buchung mit der Zahlung ab.
+        </p>
+      </div>
+
+    <div class="payment-step">
+        <p class="payment-step-label">Schritt 2 – Zahlung</p>
+        <!-- ↓ Preis hier anpassen -->
+        <p class="payment-amount">49,00 €</p>
+        <p class="payment-note">pro Person · inkl. Material</p>
+ 
+        <!-- ↓ PayPal: ersetze DEIN-PAYPAL-NUTZERNAME mit deinem PayPal.me Link -->
+        <a href="https://www.paypal.me/MWollensak/43" target="_blank" class="payment-btn">
+          Jetzt per PayPal zahlen
+        </a>
+ 
+        <p class="payment-info">
+          Dein Platz ist nach Zahlungseingang gesichert.<br>
+          Fragen? <a href="mailto:mala.studio@gmx.de" style="color:rgba(252,108,0,0.7);">mala.studio@gmx.de</a>
+        </p>
+      </div>
+ 
     </div>
 
     <div class="footer">
