@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mala Creative Studio – Achtsames Malen, kreative Transformation und emotionale Freiheit." />
+  <title>Mala Creative Studio</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background-color: #2A2535;
+      min-height: 100vh;
+    }
+
+    body {
+      background-color: #2A2535;
+      min-height: 100vh;
+      font-family: 'Jost', sans-serif;
+      color: #FAF7F2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 20px 72px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ── Watercolor Orbs ── */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-rose {
+      width: 420px;
+      height: 420px;
+      background: #B22555;
+      opacity: 0.13;
+      top: -120px;
+      left: -140px;
+      animation: driftA 22s ease-in-out infinite;
+    }
+    .orb-orange {
+      width: 320px;
+      height: 320px;
+      background: #FC6C00;
+      opacity: 0.11;
+      top: 35%;
+      right: -100px;
+      animation: driftB 18s ease-in-out infinite;
+    }
+    .orb-gold {
+      width: 280px;
+      height: 280px;
+      background: #FCC700;
+      opacity: 0.10;
+      bottom: 80px;
+      left: 20px;
+      animation: driftC 25s ease-in-out infinite;
+    }
+
+    @keyframes driftA {
+      0%,100% { transform: translate(0,0) scale(1); }
+      40%      { transform: translate(40px,-30px) scale(1.08); }
+      70%      { transform: translate(-20px,20px) scale(0.93); }
+    }
+    @keyframes driftB {
+      0%,100% { transform: translate(0,0) scale(1); }
+      35%      { transform: translate(-35px,25px) scale(1.06); }
+      65%      { transform: translate(25px,-15px) scale(0.96); }
+    }
+    @keyframes driftC {
+      0%,100% { transform: translate(0,0) scale(1); }
+      50%      { transform: translate(20px,35px) scale(1.04); }
+    }
+
+    /* ── Container ── */
+    .container {
+      max-width: 460px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Avatar ── */
+    .avatar-wrap {
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 22px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .avatar-ring {
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: conic-gradient(#B22555, #FC6C00, #FCC700, #B22555);
+      animation: spinBorder 6s linear infinite;
+    }
+    .avatar-inner {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: #2A2535;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes spinBorder {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: #FAF7F2;
+      letter-spacing: 0.025em;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .tagline {
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(250,247,242,0.45);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .sub-tagline {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(250,247,242,0.55);
+      line-height: 1.65;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    /* ── Link Cards ── */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-radius: 18px;
+      text-decoration: none;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      animation: fadeUp 0.5s ease both;
+    }
+    .card:hover {
+      transform: translateY(-3px) scale(1.012);
+    }
+    .card:focus-visible {
+      outline: 2px solid #FCC700;
+      outline-offset: 3px;
+    }
+
+    /* Featured cards */
+    .card-featured {
+      padding: 19px 22px;
+    }
+    .card-rose {
+      background: linear-gradient(135deg, #B22555 0%, #FC6C00 100%);
+      box-shadow: 0 6px 24px rgba(178,37,85,0.40);
+    }
+    .card-rose:hover {
+      box-shadow: 0 12px 40px rgba(178,37,85,0.50);
+    }
+    .card-orange {
+      background: linear-gradient(135deg, #FC6C00 0%, #FCC700 100%);
+      box-shadow: 0 6px 24px rgba(252,108,0,0.38);
+    }
+    .card-orange:hover {
+      box-shadow: 0 12px 40px rgba(252,108,0,0.48);
+    }
+    .card-gold {
+      background: linear-gradient(135deg, #FCC700 0%, #B22555 100%);
+      box-shadow: 0 6px 24px rgba(252,199,0,0.30);
+    }
+    .card-gold:hover {
+      box-shadow: 0 12px 40px rgba(252,199,0,0.40);
+    }
+
+    /* Secondary cards */
+    .card-secondary {
+      padding: 15px 22px;
+      background: rgba(250,247,242,0.06);
+      border: 1px solid rgba(250,247,242,0.10);
+    }
+    .card-secondary:hover {
+      background: rgba(250,247,242,0.09);
+    }
+
+    /* Card internals */
+    .card-emoji {
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .card-text {
+      flex: 1;
+      min-width: 0;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: #FAF7F2;
+      margin-bottom: 3px;
+      line-height: 1.2;
+    }
+    .card-featured .card-title {
+      font-size: 16px;
+    }
+    .card-subtitle {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(250,247,242,0.42);
+    }
+    .card-featured .card-subtitle {
+      color: rgba(255,255,255,0.72);
+    }
+    .card-arrow {
+      font-size: 17px;
+      color: rgba(250,247,242,0.28);
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+    .card-featured .card-arrow {
+      color: rgba(255,255,255,0.60);
+    }
+    .card:hover .card-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Staggered animation delays */
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.12s; }
+    .card:nth-child(3) { animation-delay: 0.19s; }
+    .card:nth-child(4) { animation-delay: 0.26s; }
+    .card:nth-child(5) { animation-delay: 0.33s; }
+    .card:nth-child(6) { animation-delay: 0.40s; }
+
+    /* ── Divider ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 36px 0 24px;
+      opacity: 0.22;
+    }
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: #FAF7F2;
+    }
+    .divider-text {
+      font-size: 11px;
+      color: #FAF7F2;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ── Footer ── */
+    .footer-quote {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: rgba(250,247,242,0.30);
+      letter-spacing: 0.04em;
+      line-height: 1.7;
+    }
+    .footer-url {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 11px;
+      font-weight: 300;
+      color: rgba(250,247,242,0.18);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .orb, .avatar-ring, .card, .container { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background orbs -->
+  <div class="orb orb-rose"></div>
+  <div class="orb orb-orange"></div>
+  <div class="orb orb-gold"></div>
+
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="avatar-wrap">
+        <div class="avatar-ring"></div>
+        <div class="avatar-inner">🎨</div>
+      </div>
+      <h1 class="brand-name">Mala Creative Studio</h1>
+      <p class="tagline">Farbe · Stille · Du selbst.</p>
+      <p class="sub-tagline">Achtsames Malen · Kreative Transformation · Emotionale Freiheit</p>
+    </div>
+
+    <!-- Links -->
+    <div class="links">
+
+      <a href="https://mala-creative.de/malreise" class="card card-featured card-rose">
+        <span class="card-emoji">✨</span>
+        <div class="card-text">
+          <div class="card-title">Die Intuitive Malreise</div>
+          <div class="card-subtitle">Online-Kurs · 5 Wochen</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a href="https://mala-creative.de/workshop" class="card card-featured card-orange">
+        <span class="card-emoji">🎨</span>
+        <div class="card-text">
+          <div class="card-title">Workshop buchen</div>
+          <div class="card-subtitle">Live · Vor Ort & Online</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a href="https://mala-creative.de/shop" class="card card-featured card-gold">
+        <span class="card-emoji">📖</span>
+        <div class="card-text">
+          <div class="card-title">Workbook & Kreativset</div>
+          <div class="card-subtitle">Kreativität für Zuhause</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a href="https://instagram.com/malacreativestudio" class="card card-secondary">
+        <span class="card-emoji">📸</span>
+        <div class="card-text">
+          <div class="card-title">@malacreativestudio</div>
+          <div class="card-subtitle">Tägliche Inspiration auf Instagram</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a href="https://mala-creative.de/newsletter" class="card card-secondary">
+        <span class="card-emoji">💌</span>
+        <div class="card-text">
+          <div class="card-title">Newsletter</div>
+          <div class="card-subtitle">Achtsamkeit & Kreativität im Postfach</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a href="mailto:hallo@mala-creative.de" class="card card-secondary">
+        <span class="card-emoji">✉️</span>
+        <div class="card-text">
+          <div class="card-title">Kontakt</div>
+          <div class="card-subtitle">hallo@mala-creative.de</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+    </div>
+
+    <!-- Divider -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      <span class="divider-text">Mala Creative Studio</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Footer -->
+    <p class="footer-quote">
+      „Kreativität ist keine Fähigkeit –<br>sie ist dein Naturzustand."
+    </p>
+    <p class="footer-url">mala-creative.de</p>
+
+  </div>
+
+</body>
+</html>
