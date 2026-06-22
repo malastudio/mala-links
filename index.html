@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
@@ -15,12 +15,12 @@
       margin: 0;
       padding: 0;
     }
-
+ 
     html {
       background-color: #2A2535;
       min-height: 100vh;
     }
-
+ 
     body {
       background-color: #2A2535;
       min-height: 100vh;
@@ -33,7 +33,7 @@
       position: relative;
       overflow-x: hidden;
     }
-
+ 
     /* ── Watercolor Orbs ── */
     .orb {
       position: fixed;
@@ -69,7 +69,7 @@
       left: 20px;
       animation: driftC 25s ease-in-out infinite;
     }
-
+ 
     @keyframes driftA {
       0%,100% { transform: translate(0,0) scale(1); }
       40%      { transform: translate(40px,-30px) scale(1.08); }
@@ -84,7 +84,7 @@
       0%,100% { transform: translate(0,0) scale(1); }
       50%      { transform: translate(20px,35px) scale(1.04); }
     }
-
+ 
     /* ── Container ── */
     .container {
       max-width: 460px;
@@ -93,12 +93,12 @@
       z-index: 1;
       animation: fadeUp 0.6s ease both;
     }
-
+ 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
+ 
     /* ── Avatar ── */
     .avatar-wrap {
       width: 92px;
@@ -138,7 +138,7 @@
       height: 100%;
       object-fit: contain;
     }
-
+ 
     /* ── Header ── */
     .header {
       text-align: center;
@@ -169,14 +169,14 @@
       max-width: 320px;
       margin: 0 auto;
     }
-
+ 
     /* ── Link Cards ── */
     .links {
       display: flex;
       flex-direction: column;
       gap: 13px;
     }
-
+ 
     .card {
       display: flex;
       align-items: center;
@@ -193,7 +193,7 @@
       outline: 2px solid #FCC700;
       outline-offset: 3px;
     }
-
+ 
     /* Featured cards */
     .card-featured {
       padding: 19px 22px;
@@ -219,7 +219,7 @@
     .card-gold:hover {
       box-shadow: 0 12px 40px rgba(252,199,0,0.40);
     }
-
+ 
     /* Secondary cards */
     .card-secondary {
       padding: 15px 22px;
@@ -229,7 +229,7 @@
     .card-secondary:hover {
       background: rgba(250,247,242,0.09);
     }
-
+ 
     /* Card internals */
     .card-emoji {
       font-size: 22px;
@@ -269,7 +269,7 @@
     .card:hover .card-arrow {
       transform: translateX(4px);
     }
-
+ 
     /* Staggered animation delays */
     .card:nth-child(1) { animation-delay: 0.05s; }
     .card:nth-child(2) { animation-delay: 0.12s; }
@@ -277,7 +277,7 @@
     .card:nth-child(4) { animation-delay: 0.26s; }
     .card:nth-child(5) { animation-delay: 0.33s; }
     .card:nth-child(6) { animation-delay: 0.40s; }
-
+ 
     /* ── Divider ── */
     .divider {
       display: flex;
@@ -298,7 +298,7 @@
       text-transform: uppercase;
       white-space: nowrap;
     }
-
+ 
     /* ── Footer ── */
     .footer-quote {
       text-align: center;
@@ -317,7 +317,24 @@
       color: rgba(250,247,242,0.18);
       letter-spacing: 0.08em;
     }
-
+    .footer-legal {
+      text-align: center;
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-legal a {
+      font-size: 11px;
+      font-weight: 300;
+      color: rgba(250,247,242,0.22);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .footer-legal a:hover { color: rgba(250,247,242,0.5); }
+    .footer-legal span { color: rgba(250,247,242,0.15); font-size: 10px; }
+ 
     /* ── Reduced motion ── */
     @media (prefers-reduced-motion: reduce) {
       .orb, .card, .container { animation: none !important; }
