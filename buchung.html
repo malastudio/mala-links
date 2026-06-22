@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Workshop buchen – Mala Creative Studio" />
+  <title>Workshop buchen – Mala Creative Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { background-color: #2A2535; min-height: 100vh; }
+
+    body {
+      background-color: #2A2535;
+      min-height: 100vh;
+      font-family: 'Jost', sans-serif;
+      color: #FAF7F2;
+      padding: 40px 20px 72px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ── Orbs ── */
+    .orb { position: fixed; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 0; }
+    .orb-rose  { width: 420px; height: 420px; background: #B22555; opacity: 0.13; top: -120px; left: -140px; animation: driftA 22s ease-in-out infinite; }
+    .orb-orange{ width: 320px; height: 320px; background: #FC6C00; opacity: 0.11; top: 35%; right: -100px; animation: driftB 18s ease-in-out infinite; }
+    .orb-gold  { width: 280px; height: 280px; background: #FCC700; opacity: 0.10; bottom: 80px; left: 20px; animation: driftC 25s ease-in-out infinite; }
+
+    @keyframes driftA { 0%,100%{transform:translate(0,0) scale(1);} 40%{transform:translate(40px,-30px) scale(1.08);} 70%{transform:translate(-20px,20px) scale(0.93);} }
+    @keyframes driftB { 0%,100%{transform:translate(0,0) scale(1);} 35%{transform:translate(-35px,25px) scale(1.06);} 65%{transform:translate(25px,-15px) scale(0.96);} }
+    @keyframes driftC { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(20px,35px) scale(1.04);} }
+
+    /* ── Layout ── */
+    .container { max-width: 560px; width: 100%; margin: 0 auto; position: relative; z-index: 1; }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(250,247,242,0.45);
+      font-size: 13px;
+      text-decoration: none;
+      margin-bottom: 36px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: rgba(250,247,242,0.8); }
+
+    /* ── Header ── */
+    .header { text-align: center; margin-bottom: 44px; }
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(250,247,242,0.35);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: #FAF7F2;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .page-subtitle {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(250,247,242,0.55);
+      line-height: 1.7;
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250,247,242,0.35);
+      margin-bottom: 14px;
+      margin-top: 36px;
+      display: block;
+    }
+
+    /* ── Date cards ── */
+    .date-list { display: flex; flex-direction: column; gap: 10px; }
+
+    .date-card { cursor: pointer; }
+    .date-card input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+
+    .date-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(250,247,242,0.1);
+      background: rgba(250,247,242,0.05);
+      cursor: pointer;
+      transition: all 0.22s;
+    }
+    .date-label:hover { background: rgba(250,247,242,0.09); border-color: rgba(250,247,242,0.22); }
+    .date-card input:checked + .date-label {
+      background: linear-gradient(135deg, rgba(178,37,85,0.22), rgba(252,108,0,0.22));
+      border-color: #FC6C00;
+    }
+
+    .radio-dot {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      border: 2px solid rgba(250,247,242,0.28);
+      flex-shrink: 0;
+      margin-top: 3px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    .date-card input:checked + .date-label .radio-dot {
+      border-color: #FC6C00;
+      background: #FC6C00;
+    }
+    .radio-dot::after {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #2A2535;
+      display: none;
+    }
+    .date-card input:checked + .date-label .radio-dot::after { display: block; }
+
+    .date-info { flex: 1; min-width: 0; }
+    .date-name {
+      display: block;
+      font-size: 15px;
+      font-weight: 500;
+      color: #FAF7F2;
+      margin-bottom: 5px;
+    }
+    .date-desc {
+      display: block;
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(250,247,242,0.5);
+      line-height: 1.55;
+    }
+    .date-tag {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 20px;
+      background: rgba(252,199,0,0.12);
+      color: #FCC700;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ── Form fields ── */
+    .form-group { margin-bottom: 16px; }
+    .form-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(250,247,242,0.45);
+      margin-bottom: 7px;
+    }
+    .form-input, .form-textarea {
+      width: 100%;
+      background: rgba(250,247,242,0.07);
+      border: 1px solid rgba(250,247,242,0.12);
+      border-radius: 12px;
+      padding: 13px 16px;
+      font-family: 'Jost', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: #FAF7F2;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(250,247,242,0.22); }
+    .form-input:focus, .form-textarea:focus {
+      border-color: #FC6C00;
+      background: rgba(250,247,242,0.1);
+    }
+    .form-textarea { resize: vertical; min-height: 90px; }
+
+    /* ── Submit ── */
+    .submit-btn {
+      width: 100%;
+      padding: 17px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #B22555 0%, #FC6C00 100%);
+      color: #FAF7F2;
+      font-family: 'Jost', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 6px 24px rgba(178,37,85,0.38);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(178,37,85,0.5); }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    /* ── Success ── */
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 40px 24px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(178,37,85,0.18), rgba(252,108,0,0.18));
+      border: 1px solid rgba(252,108,0,0.28);
+    }
+    .success-msg.visible { display: block; }
+    .success-icon { font-size: 44px; margin-bottom: 18px; }
+    .success-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: #FAF7F2;
+      margin-bottom: 12px;
+    }
+    .success-text {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(250,247,242,0.6);
+      line-height: 1.75;
+    }
+
+    /* ── Footer ── */
+    .footer { text-align: center; margin-top: 44px; }
+    .footer a {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(250,247,242,0.22);
+      text-decoration: none;
+    }
+    .footer a:hover { color: rgba(250,247,242,0.5); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .orb { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="orb orb-rose"></div>
+  <div class="orb orb-orange"></div>
+  <div class="orb orb-gold"></div>
+
+  <div class="container">
+
+    <a href="index.html" class="back-link">← Zurück zum Linktree</a>
+
+    <div class="header">
+      <p class="brand-name">Mala Creative Studio</p>
+      <h1 class="page-title">Workshop buchen</h1>
+      <p class="page-subtitle">
+        Wähle ein Datum und melde dich an.<br>
+        Wir freuen uns auf dich.
+      </p>
+    </div>
+
+    <!-- BUCHUNGSFORMULAR -->
+    <form id="bookingForm" action="https://formspree.io/f/DEINE_FORMSPREE_ID" method="POST">
+
+      <!-- Formspree Konfiguration -->
+      <input type="hidden" name="_subject" value="🎨 Neue Workshop-Anmeldung – Mala Creative Studio" />
+      <input type="hidden" name="_language" value="de" />
+      <input type="hidden" name="_next" value="" />
+
+      <!-- Workshop-Auswahl -->
+      <span class="section-label">Workshop wählen *</span>
+      <div class="date-list">
+
+        <div class="date-card">
+          <input type="radio" name="workshop" id="ws1"
+            value="Sa. 15. März 2025 – Intuitives Malen für Einsteiger" required />
+          <label class="date-label" for="ws1">
+            <span class="radio-dot"></span>
+            <span class="date-info">
+              <span class="date-name">Sa. 15. März 2025 · 10:00 – 13:00 Uhr</span>
+              <span class="date-desc">Intuitives Malen für Einsteiger – Lass dich von Farben leiten, ganz ohne Vorkenntnisse. Material inklusive.</span>
+            </span>
+            <span class="date-tag">3 Std.</span>
+          </label>
+        </div>
+
+        <div class="date-card">
+          <input type="radio" name="workshop" id="ws2"
+            value="Sa. 5. April 2025 – Farbe & Stille" />
+          <label class="date-label" for="ws2">
+            <span class="radio-dot"></span>
+            <span class="date-info">
+              <span class="date-name">Sa. 5. April 2025 · 10:00 – 13:00 Uhr</span>
+              <span class="date-desc">Farbe & Stille – Ein achtsamer Workshop zum Entschleunigen, Loslassen und Neuverbinden mit dir selbst.</span>
+            </span>
+            <span class="date-tag">3 Std.</span>
+          </label>
+        </div>
+
+        <div class="date-card">
+          <input type="radio" name="workshop" id="ws3"
+            value="Sa. 3. Mai 2025 – Emotionales Ausdrucksmalen" />
+          <label class="date-label" for="ws3">
+            <span class="radio-dot"></span>
+            <span class="date-info">
+              <span class="date-name">Sa. 3. Mai 2025 · 10:00 – 13:00 Uhr</span>
+              <span class="date-desc">Emotionales Ausdrucksmalen – Deine innere Welt auf die Leinwand bringen. Für alle Erfahrensstufen.</span>
+            </span>
+            <span class="date-tag">3 Std.</span>
+          </label>
+        </div>
+
+      </div>
+
+      <!-- Persönliche Angaben -->
+      <span class="section-label" style="margin-top:36px;">Deine Angaben</span>
+
+      <div class="form-group">
+        <label class="form-label" for="name">Name *</label>
+        <input class="form-input" type="text" id="name" name="name"
+          placeholder="Dein vollständiger Name" required />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email">E-Mail *</label>
+        <input class="form-input" type="email" id="email" name="email"
+          placeholder="deine@email.de" required />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="phone">Telefon (optional)</label>
+        <input class="form-input" type="tel" id="phone" name="phone"
+          placeholder="+49 ..." />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="message">Nachricht (optional)</label>
+        <textarea class="form-textarea" id="message" name="message"
+          placeholder="Fragen, Wünsche oder etwas Schönes …"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">
+        Jetzt anmelden →
+      </button>
+
+    </form>
+
+    <!-- Erfolgsmeldung (wird nach dem Absenden angezeigt) -->
+    <div class="success-msg" id="successMsg">
+      <div class="success-icon">🎨</div>
+      <p class="success-title">Danke für deine Anmeldung!</p>
+      <p class="success-text">
+        Wir haben deine Anfrage erhalten und melden uns in Kürze per E-Mail bei dir.<br><br>
+        Wir freuen uns sehr darauf, gemeinsam zu malen.
+      </p>
+    </div>
+
+    <div class="footer">
+      <a href="mailto:mala.studio@gmx.de">mala.studio@gmx.de</a>
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Wird gesendet …';
+
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          document.getElementById('successMsg').classList.add('visible');
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Jetzt anmelden →';
+          alert('Es gab ein Problem. Bitte schreib uns direkt an:\nmala.studio@gmx.de');
+        }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Jetzt anmelden →';
+        alert('Keine Verbindung. Bitte schreib uns direkt an:\nmala.studio@gmx.de');
+      }
+    });
+  </script>
+
+</body>
+</html>
