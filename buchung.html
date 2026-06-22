@@ -302,9 +302,9 @@
 
     </form>
 
-    <!-- Erfolgsmeldung + Zahlungsschritt -->
+        <!-- Erfolgsmeldung + Zahlungsschritt -->
     <div class="success-msg" id="successMsg">
-
+ 
       <div class="success-step">
         <div class="success-icon">✓</div>
         <p class="success-title">Anmeldung erhalten!</p>
@@ -313,27 +313,54 @@
           Bitte schließe jetzt deine Buchung mit der Zahlung ab.
         </p>
       </div>
-
+ 
       <div class="payment-step">
         <p class="payment-step-label">Schritt 2 – Zahlung</p>
         <!-- ↓ Preis hier anpassen -->
         <p class="payment-amount">45,00 €</p>
         <p class="payment-note">pro Person · inkl. Material</p>
-
-        <!-- ↓ PayPal: ersetze DEIN-PAYPAL-NUTZERNAME mit deinem PayPal.me Link -->
-        <a href="https://www.paypal.me/MWollensak/45" target="_blank" class="payment-btn">
+ 
+        <!-- PayPal -->
+        <!-- ↓ Ersetze DEIN-PAYPAL-NUTZERNAME mit deinem PayPal.me Nutzernamen -->
+        <a href="https://www.paypal.me/mwollensak/49" target="_blank" class="payment-btn">
           Jetzt per PayPal zahlen
         </a>
-
+ 
+        <!-- Trennlinie -->
+        <div class="payment-divider">
+          <span>oder per Überweisung</span>
+        </div>
+ 
+        <!-- Bankverbindung -->
+        <!-- ↓ Deine Bankdaten eintragen -->
+        <div class="bank-details">
+          <div class="bank-row">
+            <span class="bank-label">Empfänger</span>
+            <span class="bank-value">[DEIN NAME]</span>
+          </div>
+          <div class="bank-row">
+            <span class="bank-label">IBAN</span>
+            <span class="bank-value">[DEINE IBAN]</span>
+          </div>
+          <div class="bank-row">
+            <span class="bank-label">BIC</span>
+            <span class="bank-value">[DEINE BIC]</span>
+          </div>
+          <div class="bank-row">
+            <span class="bank-label">Verwendungszweck</span>
+            <span class="bank-value">Workshop Mala + dein Name</span>
+          </div>
+        </div>
+ 
         <p class="payment-info">
           Dein Platz ist nach Zahlungseingang gesichert.<br>
           Fragen? <a href="mailto:mala.studio@gmx.de" style="color:rgba(252,108,0,0.7);">mala.studio@gmx.de</a>
         </p>
       </div>
-
+ 
     </div>
-
-    <div class="footer">
+    
+  <div class="footer">
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
       <a href="agb.html">AGB</a>
