@@ -25,16 +25,16 @@
     @keyframes driftA { 0%,100%{transform:translate(0,0) scale(1);} 40%{transform:translate(40px,-30px) scale(1.08);} 70%{transform:translate(-20px,20px) scale(0.93);} }
     @keyframes driftB { 0%,100%{transform:translate(0,0) scale(1);} 35%{transform:translate(-35px,25px) scale(1.06);} 65%{transform:translate(25px,-15px) scale(0.96);} }
     @keyframes driftC { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(20px,35px) scale(1.04);} }
- 
+
     .container { max-width: 560px; width: 100%; margin: 0 auto; position: relative; z-index: 1; }
- 
+
     .back-link {
       display: inline-flex; align-items: center; gap: 8px;
       color: rgba(250,247,242,0.45); font-size: 13px; text-decoration: none;
       margin-bottom: 36px; transition: color 0.2s;
     }
     .back-link:hover { color: rgba(250,247,242,0.8); }
- 
+
     .header { text-align: center; margin-bottom: 44px; }
     .brand-name {
       font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 400;
@@ -46,13 +46,13 @@
       color: #FAF7F2; line-height: 1.2; margin-bottom: 14px;
     }
     .page-subtitle { font-size: 15px; font-weight: 300; color: rgba(250,247,242,0.55); line-height: 1.7; }
- 
+
     .section-label {
       font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
       text-transform: uppercase; color: rgba(250,247,242,0.35);
       margin-bottom: 14px; margin-top: 36px; display: block;
     }
- 
+
     /* ── Date cards ── */
     .date-list { display: flex; flex-direction: column; gap: 10px; }
     .date-card { cursor: pointer; }
@@ -76,12 +76,12 @@
     .date-card input:checked + .date-label .radio-dot { border-color: #FC6C00; background: #FC6C00; }
     .radio-dot::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #2A2535; display: none; }
     .date-card input:checked + .date-label .radio-dot::after { display: block; }
- 
+
     .date-info { flex: 1; min-width: 0; }
     .date-name { display: block; font-size: 15px; font-weight: 500; color: #FAF7F2; margin-bottom: 5px; }
     .date-desc { display: block; font-size: 13px; font-weight: 300; color: rgba(250,247,242,0.5); line-height: 1.55; }
     .date-loc { display: block; font-size: 11px; font-weight: 400; color: rgba(252,199,0,0.7); margin-top: 5px; }
- 
+
     .date-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
     .date-price {
       font-size: 17px; font-weight: 600; color: #FAF7F2;
@@ -92,7 +92,7 @@
       background: rgba(252,199,0,0.12); color: #FCC700; white-space: nowrap;
     }
     .date-incl { font-size: 10px; color: rgba(250,247,242,0.35); white-space: nowrap; }
- 
+
     /* ── Price info box ── */
     .price-info {
       margin-top: 14px; padding: 14px 16px; border-radius: 12px;
@@ -100,7 +100,7 @@
       font-size: 13px; font-weight: 300; color: rgba(250,247,242,0.6); line-height: 1.6;
     }
     .price-info strong { color: rgba(252,199,0,0.9); font-weight: 500; }
- 
+
     /* ── Form ── */
     .form-group { margin-bottom: 16px; }
     .form-label {
@@ -118,7 +118,7 @@
     .form-input::placeholder, .form-textarea::placeholder { color: rgba(250,247,242,0.22); }
     .form-input:focus, .form-textarea:focus { border-color: #FC6C00; background: rgba(250,247,242,0.1); }
     .form-textarea { resize: vertical; min-height: 90px; }
- 
+
     /* ── Checkboxes ── */
     .checkbox-group { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
     .checkbox-group input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
@@ -134,14 +134,14 @@
     .checkbox-label { font-size: 13px; font-weight: 300; color: rgba(250,247,242,0.6); line-height: 1.55; cursor: pointer; }
     .checkbox-label a { color: rgba(252,108,0,0.85); text-decoration: underline; }
     .checkbox-label a:hover { color: #FC6C00; }
- 
+
     .storno-hint {
       padding: 14px 16px; border-radius: 12px; margin-bottom: 20px;
       background: rgba(250,247,242,0.05); border: 1px solid rgba(250,247,242,0.1);
       font-size: 12px; font-weight: 300; color: rgba(250,247,242,0.45); line-height: 1.65;
     }
     .storno-hint strong { color: rgba(250,247,242,0.65); font-weight: 500; }
- 
+
     /* ── Submit ── */
     .submit-btn {
       width: 100%; padding: 17px; border: none; border-radius: 14px;
@@ -153,7 +153,7 @@
     .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(178,37,85,0.5); }
     .submit-btn:active { transform: translateY(0); }
     .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
- 
+
     /* ── Success + Payment ── */
     .success-msg { display: none; }
     .success-msg.visible { display: block; }
@@ -164,7 +164,7 @@
     .success-icon { font-size: 40px; margin-bottom: 14px; }
     .success-title { font-family: 'Playfair Display', serif; font-size: 22px; color: #FAF7F2; margin-bottom: 10px; }
     .success-text { font-size: 14px; font-weight: 300; color: rgba(250,247,242,0.6); line-height: 1.75; }
- 
+
     .payment-step {
       padding: 24px; border-radius: 18px; margin-bottom: 16px;
       background: linear-gradient(135deg, rgba(178,37,85,0.18), rgba(252,108,0,0.18));
@@ -193,12 +193,12 @@
       margin-left: 10px;
     }
     .payment-info { font-size: 12px; color: rgba(250,247,242,0.3); margin-top: 14px; line-height: 1.55; }
- 
+
     /* ── Footer ── */
     .footer { text-align: center; margin-top: 44px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
     .footer a { font-size: 12px; font-weight: 300; color: rgba(250,247,242,0.25); text-decoration: none; }
     .footer a:hover { color: rgba(250,247,242,0.55); }
- 
+
     @media (prefers-reduced-motion: reduce) { .orb { animation: none !important; } }
   </style>
 </head>
@@ -210,48 +210,41 @@
 
   <div class="container">
 
-    <a href="index.html" class="back-link">← Zurück zur Hauptseite</a>
+    <a href="index.html" class="back-link">← Zurück</a>
 
     <div class="header">
       <p class="brand-name">Mala Creative Studio</p>
       <h1 class="page-title">Workshop buchen</h1>
-      <p class="page-subtitle">
-        Wähle ein Datum und melde dich an.<br>
-        Ich freue mich auf dich.
-      </p>
+      <p class="page-subtitle">Wähle ein Datum und melde dich an.<br>Wir freuen uns auf dich.</p>
     </div>
 
     <!-- BUCHUNGSFORMULAR -->
-    <form id="bookingForm" action="https://formspree.io/f/mojoqrvr" method="POST">
-
-      <!-- Formspree Konfiguration -->
+    <form id="bookingForm" action="https://formspree.io/f/DEINE_FORMSPREE_ID" method="POST">
       <input type="hidden" name="_subject" value="🎨 Neue Workshop-Anmeldung – Mala Creative Studio" />
       <input type="hidden" name="_language" value="de" />
-      <input type="hidden" name="_next" value="" />
 
       <!-- Workshop-Auswahl -->
       <span class="section-label">Workshop wählen *</span>
       <div class="date-list">
 
         <div class="date-card">
-          <input type="radio" name="Workshop" id="ws1"
-            value="Sa. 25. Juli 2026 – Intuitives Malen" required />
+          <!-- ↓ Preis hier anpassen -->
+          <input type="radio" name="workshop" id="ws1" value="Sa. 25. Juli 2026 – Intuitives Malen für Einsteiger – 49,00 €" required />
           <label class="date-label" for="ws1">
             <span class="radio-dot"></span>
             <span class="date-info">
               <span class="date-name">Sa. 25. Juli 2026 · 14:00 – 17:00 Uhr</span>
-              <span class="date-desc">Intuitives Malen – Lass dich von Farben leiten, ganz ohne Vorkenntnisse. Material inklusive. Weitere Informationen findest du auf meiner Instagramseite</span>
-              <span class="date-loc">📍71404 Korb (Die genaue Adresse erhältst du nach deiner Anmeldung.) </span>
-            </span>
+              <span class="date-desc">Intuitives Malen für Einsteiger – Lass dich von Farben leiten, ganz ohne Vorkenntnisse.</span>
+              <span class="date-loc">📍71404 Korb (Die genaue Adresse erhältst du nach deiner Anmeldung)</span>
             </span>
             <span class="date-meta">
+              <!-- ↓ Preis hier anpassen -->
               <span class="date-price">45,00 € p.P.</span>
               <span class="date-tag">3 Std.</span>
               <span class="date-incl">inkl. Material</span>
             </span>
           </label>
         </div>
-
       </div>
 
       <!-- Preishinweis -->
@@ -260,70 +253,90 @@
       </div>
 
       <!-- Persönliche Angaben -->
-      <span class="section-label" style="margin-top:36px;">Deine Angaben</span>
+      <span class="section-label" style="margin-top:32px;">Deine Angaben</span>
 
       <div class="form-group">
         <label class="form-label" for="name">Name *</label>
-        <input class="form-input" type="text" id="name" name="Name"
-          placeholder="Dein vollständiger Name" required />
+        <input class="form-input" type="text" id="name" name="Name" placeholder="Dein vollständiger Name" required />
       </div>
-
       <div class="form-group">
         <label class="form-label" for="email">E-Mail *</label>
-        <input class="form-input" type="email" id="email" name="E-mail"
-          placeholder="deine@email.de" required />
+        <input class="form-input" type="email" id="email" name="E-mail" placeholder="deine@email.de" required />
       </div>
-
       <div class="form-group">
         <label class="form-label" for="phone">Telefon (optional)</label>
-        <input class="form-input" type="tel" id="phone" name="Phone"
-          placeholder="+49 ..." />
+        <input class="form-input" type="tel" id="phone" name="Phone" placeholder="+49 ..." />
       </div>
-
       <div class="form-group">
         <label class="form-label" for="message">Nachricht (optional)</label>
-        <textarea class="form-textarea" id="message" name="Message"
-          placeholder="Fragen, Wünsche oder etwas Schönes …"></textarea>
+        <textarea class="form-textarea" id="message" name="Message" placeholder="Fragen, Wünsche ..."></textarea>
       </div>
 
+      <!-- Stornierungshinweis -->
+      <div class="storno-hint">
+        <strong>Stornierung:</strong> Bis 14 Tage vor dem Workshop kostenlos. Bis 7 Tage davor 50 % Rückerstattung. Danach kein Anspruch auf Rückerstattung. Details in unseren <a href="agb.html" style="color:rgba(252,108,0,0.7);">AGB</a>.
+      </div>
+
+      <!-- Rechtliche Zustimmung -->
+      <span class="section-label" style="margin-top:4px;">Zustimmung *</span>
+
+      <label class="checkbox-group">
+        <input type="checkbox" name="agb_accepted" value="Ja" required />
+        <span class="checkbox-box"></span>
+        <span class="checkbox-label">
+          Ich habe die <a href="agb.html" target="_blank">AGB</a> gelesen und akzeptiere sie. Ich stimme den Stornierungsbedingungen zu. *
+        </span>
+      </label>
+
+      <label class="checkbox-group">
+        <input type="checkbox" name="datenschutz_accepted" value="Ja" required />
+        <span class="checkbox-box"></span>
+        <span class="checkbox-label">
+          Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und bin einverstanden, dass meine Daten zur Bearbeitung meiner Anmeldung gespeichert werden. *
+        </span>
+      </label>
+
       <button type="submit" class="submit-btn" id="submitBtn">
-        Jetzt kostenpflichtig anmelden →
+        Verbindlich anmelden →
       </button>
 
     </form>
 
     <!-- Erfolgsmeldung + Zahlungsschritt -->
     <div class="success-msg" id="successMsg">
- 
+
       <div class="success-step">
         <div class="success-icon">✓</div>
         <p class="success-title">Anmeldung erhalten!</p>
         <p class="success-text">
-          Du erhältst in Kürze eine Bestätigungs-E-Mail von mir.<br>
+          Du erhältst in Kürze eine Bestätigungs-E-Mail von uns.<br>
           Bitte schließe jetzt deine Buchung mit der Zahlung ab.
         </p>
       </div>
 
-    <div class="payment-step">
+      <div class="payment-step">
         <p class="payment-step-label">Schritt 2 – Zahlung</p>
         <!-- ↓ Preis hier anpassen -->
         <p class="payment-amount">45,00 €</p>
         <p class="payment-note">pro Person · inkl. Material</p>
- 
+
         <!-- ↓ PayPal: ersetze DEIN-PAYPAL-NUTZERNAME mit deinem PayPal.me Link -->
         <a href="https://www.paypal.me/MWollensak/45" target="_blank" class="payment-btn">
           Jetzt per PayPal zahlen
         </a>
- 
+
         <p class="payment-info">
           Dein Platz ist nach Zahlungseingang gesichert.<br>
           Fragen? <a href="mailto:mala.studio@gmx.de" style="color:rgba(252,108,0,0.7);">mala.studio@gmx.de</a>
         </p>
       </div>
- 
+
     </div>
 
     <div class="footer">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="agb.html">AGB</a>
       <a href="mailto:mala.studio@gmx.de">mala.studio@gmx.de</a>
     </div>
 
@@ -336,26 +349,21 @@
       const btn = document.getElementById('submitBtn');
       btn.disabled = true;
       btn.textContent = 'Wird gesendet …';
-
       const data = new FormData(form);
       try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
+        const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
         if (res.ok) {
           form.style.display = 'none';
           document.getElementById('successMsg').classList.add('visible');
         } else {
           btn.disabled = false;
-          btn.textContent = 'Jetzt anmelden →';
-          alert('Es gab ein Problem. Bitte schreib uns direkt an:\nmala.studio@gmx.de');
+          btn.textContent = 'Verbindlich anmelden →';
+          alert('Es gab ein Problem. Bitte schreib uns direkt:\nmala.studio@gmx.de');
         }
       } catch {
         btn.disabled = false;
-        btn.textContent = 'Jetzt anmelden →';
-        alert('Keine Verbindung. Bitte schreib uns direkt an:\nmala.studio@gmx.de');
+        btn.textContent = 'Verbindlich anmelden →';
+        alert('Keine Verbindung. Bitte schreib uns direkt:\nmala.studio@gmx.de');
       }
     });
   </script>
