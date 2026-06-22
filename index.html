@@ -116,6 +116,10 @@
       background: conic-gradient(#B22555, #FC6C00, #FCC700, #B22555);
       animation: spinBorder 6s linear infinite;
     }
+    @keyframes spinBorder {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
     .avatar-inner {
       width: 88px;
       height: 88px;
@@ -124,13 +128,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 36px;
+      padding: 10px;
       position: relative;
       z-index: 1;
+      overflow: hidden;
     }
-    @keyframes spinBorder {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
+    .avatar-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     /* ── Header ── */
@@ -314,7 +320,7 @@
 
     /* ── Reduced motion ── */
     @media (prefers-reduced-motion: reduce) {
-      .orb, .avatar-ring, .card, .container { animation: none !important; }
+      .orb, .card, .container { animation: none !important; }
     }
   </style>
 </head>
@@ -332,7 +338,8 @@
       <div class="avatar-wrap">
         <div class="avatar-ring"></div>
         <div class="avatar-inner">
-        <img src="logo.png" alt="Mala Creative Studio" />
+          <img src="logo.png" alt="Mala Creative Studio" />
+        </div>
       </div>
       <h1 class="brand-name">Mala Creative Studio</h1>
       <p class="tagline">Farbe · Stille · Du selbst.</p>
@@ -342,19 +349,10 @@
     <!-- Links -->
     <div class="links">
 
-      <a href="https://mala-creative.de/malreise" class="card card-featured card-rose">
-        <span class="card-emoji">✨</span>
-        <div class="card-text">
-          <div class="card-title">Die Intuitive Malreise (coming soon)</div>
-          <div class="card-subtitle">Online-Kurs · 5 Wochen</div>
-        </div>
-        <span class="card-arrow">→</span>
-      </a>
-
       <a href="https://mala-creative.de/workshop" class="card card-featured card-orange">
         <span class="card-emoji">🎨</span>
         <div class="card-text">
-          <div class="card-title">Workshop buchen</div>
+          <div class="card-title">Workshop buchen (Bitte über Kontakt)</div>
           <div class="card-subtitle">Live · Vor Ort & Online</div>
         </div>
         <span class="card-arrow">→</span>
