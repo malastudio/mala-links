@@ -8,9 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { background-color: #2A2535; min-height: 100vh; }
-
     body {
       background-color: #2A2535;
       min-height: 100vh;
@@ -20,239 +18,188 @@
       position: relative;
       overflow-x: hidden;
     }
-
-    /* ── Orbs ── */
     .orb { position: fixed; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 0; }
     .orb-rose  { width: 420px; height: 420px; background: #B22555; opacity: 0.13; top: -120px; left: -140px; animation: driftA 22s ease-in-out infinite; }
     .orb-orange{ width: 320px; height: 320px; background: #FC6C00; opacity: 0.11; top: 35%; right: -100px; animation: driftB 18s ease-in-out infinite; }
     .orb-gold  { width: 280px; height: 280px; background: #FCC700; opacity: 0.10; bottom: 80px; left: 20px; animation: driftC 25s ease-in-out infinite; }
-
     @keyframes driftA { 0%,100%{transform:translate(0,0) scale(1);} 40%{transform:translate(40px,-30px) scale(1.08);} 70%{transform:translate(-20px,20px) scale(0.93);} }
     @keyframes driftB { 0%,100%{transform:translate(0,0) scale(1);} 35%{transform:translate(-35px,25px) scale(1.06);} 65%{transform:translate(25px,-15px) scale(0.96);} }
     @keyframes driftC { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(20px,35px) scale(1.04);} }
-
-    /* ── Layout ── */
+ 
     .container { max-width: 560px; width: 100%; margin: 0 auto; position: relative; z-index: 1; }
-
-    /* ── Back link ── */
+ 
     .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: rgba(250,247,242,0.45);
-      font-size: 13px;
-      text-decoration: none;
-      margin-bottom: 36px;
-      transition: color 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+      color: rgba(250,247,242,0.45); font-size: 13px; text-decoration: none;
+      margin-bottom: 36px; transition: color 0.2s;
     }
     .back-link:hover { color: rgba(250,247,242,0.8); }
-
-    /* ── Header ── */
+ 
     .header { text-align: center; margin-bottom: 44px; }
     .brand-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 14px;
-      font-weight: 400;
-      color: rgba(250,247,242,0.35);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
+      font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 400;
+      color: rgba(250,247,242,0.35); letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 14px;
     }
     .page-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      font-weight: 600;
-      color: #FAF7F2;
-      line-height: 1.2;
-      margin-bottom: 14px;
+      font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 600;
+      color: #FAF7F2; line-height: 1.2; margin-bottom: 14px;
     }
-    .page-subtitle {
-      font-size: 15px;
-      font-weight: 300;
-      color: rgba(250,247,242,0.55);
-      line-height: 1.7;
-    }
-
-    /* ── Section label ── */
+    .page-subtitle { font-size: 15px; font-weight: 300; color: rgba(250,247,242,0.55); line-height: 1.7; }
+ 
     .section-label {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(250,247,242,0.35);
-      margin-bottom: 14px;
-      margin-top: 36px;
-      display: block;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(250,247,242,0.35);
+      margin-bottom: 14px; margin-top: 36px; display: block;
     }
-
+ 
     /* ── Date cards ── */
     .date-list { display: flex; flex-direction: column; gap: 10px; }
-
     .date-card { cursor: pointer; }
     .date-card input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
-
     .date-label {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 16px 18px;
-      border-radius: 14px;
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 16px 18px; border-radius: 14px;
       border: 1px solid rgba(250,247,242,0.1);
-      background: rgba(250,247,242,0.05);
-      cursor: pointer;
-      transition: all 0.22s;
+      background: rgba(250,247,242,0.05); cursor: pointer; transition: all 0.22s;
     }
     .date-label:hover { background: rgba(250,247,242,0.09); border-color: rgba(250,247,242,0.22); }
     .date-card input:checked + .date-label {
       background: linear-gradient(135deg, rgba(178,37,85,0.22), rgba(252,108,0,0.22));
       border-color: #FC6C00;
     }
-
     .radio-dot {
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      border: 2px solid rgba(250,247,242,0.28);
-      flex-shrink: 0;
-      margin-top: 3px;
-      display: flex; align-items: center; justify-content: center;
-      transition: all 0.2s;
+      width: 18px; height: 18px; border-radius: 50%;
+      border: 2px solid rgba(250,247,242,0.28); flex-shrink: 0; margin-top: 3px;
+      display: flex; align-items: center; justify-content: center; transition: all 0.2s;
     }
-    .date-card input:checked + .date-label .radio-dot {
-      border-color: #FC6C00;
-      background: #FC6C00;
-    }
-    .radio-dot::after {
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #2A2535;
-      display: none;
-    }
+    .date-card input:checked + .date-label .radio-dot { border-color: #FC6C00; background: #FC6C00; }
+    .radio-dot::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #2A2535; display: none; }
     .date-card input:checked + .date-label .radio-dot::after { display: block; }
-
+ 
     .date-info { flex: 1; min-width: 0; }
-    .date-name {
-      display: block;
-      font-size: 15px;
-      font-weight: 500;
-      color: #FAF7F2;
-      margin-bottom: 5px;
-    }
-    .date-desc {
-      display: block;
-      font-size: 13px;
-      font-weight: 300;
-      color: rgba(250,247,242,0.5);
-      line-height: 1.55;
-    }
-    .date-loc {
-      display: block;
-      font-size: 12px;
-      font-weight: 400;
-      color: rgba(252,199,0,0.7);
-      margin-top: 6px;
+    .date-name { display: block; font-size: 15px; font-weight: 500; color: #FAF7F2; margin-bottom: 5px; }
+    .date-desc { display: block; font-size: 13px; font-weight: 300; color: rgba(250,247,242,0.5); line-height: 1.55; }
+    .date-loc { display: block; font-size: 11px; font-weight: 400; color: rgba(252,199,0,0.7); margin-top: 5px; }
+ 
+    .date-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
+    .date-price {
+      font-size: 17px; font-weight: 600; color: #FAF7F2;
+      white-space: nowrap;
     }
     .date-tag {
-      font-size: 11px;
-      font-weight: 500;
-      padding: 3px 9px;
-      border-radius: 20px;
-      background: rgba(252,199,0,0.12);
-      color: #FCC700;
-      white-space: nowrap;
-      flex-shrink: 0;
-      margin-top: 2px;
+      font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px;
+      background: rgba(252,199,0,0.12); color: #FCC700; white-space: nowrap;
     }
-
-    /* ── Form fields ── */
+    .date-incl { font-size: 10px; color: rgba(250,247,242,0.35); white-space: nowrap; }
+ 
+    /* ── Price info box ── */
+    .price-info {
+      margin-top: 14px; padding: 14px 16px; border-radius: 12px;
+      background: rgba(252,199,0,0.08); border: 1px solid rgba(252,199,0,0.18);
+      font-size: 13px; font-weight: 300; color: rgba(250,247,242,0.6); line-height: 1.6;
+    }
+    .price-info strong { color: rgba(252,199,0,0.9); font-weight: 500; }
+ 
+    /* ── Form ── */
     .form-group { margin-bottom: 16px; }
     .form-label {
-      display: block;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(250,247,242,0.45);
-      margin-bottom: 7px;
+      display: block; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(250,247,242,0.45); margin-bottom: 7px;
     }
     .form-input, .form-textarea {
-      width: 100%;
-      background: rgba(250,247,242,0.07);
-      border: 1px solid rgba(250,247,242,0.12);
-      border-radius: 12px;
-      padding: 13px 16px;
-      font-family: 'Jost', sans-serif;
-      font-size: 15px;
-      font-weight: 300;
-      color: #FAF7F2;
-      outline: none;
-      transition: border-color 0.2s, background 0.2s;
-      -webkit-appearance: none;
+      width: 100%; background: rgba(250,247,242,0.07);
+      border: 1px solid rgba(250,247,242,0.12); border-radius: 12px;
+      padding: 13px 16px; font-family: 'Jost', sans-serif;
+      font-size: 15px; font-weight: 300; color: #FAF7F2;
+      outline: none; transition: border-color 0.2s, background 0.2s; -webkit-appearance: none;
     }
     .form-input::placeholder, .form-textarea::placeholder { color: rgba(250,247,242,0.22); }
-    .form-input:focus, .form-textarea:focus {
-      border-color: #FC6C00;
-      background: rgba(250,247,242,0.1);
-    }
+    .form-input:focus, .form-textarea:focus { border-color: #FC6C00; background: rgba(250,247,242,0.1); }
     .form-textarea { resize: vertical; min-height: 90px; }
-
+ 
+    /* ── Checkboxes ── */
+    .checkbox-group { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+    .checkbox-group input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .checkbox-box {
+      width: 20px; height: 20px; border-radius: 6px; flex-shrink: 0; margin-top: 1px;
+      border: 2px solid rgba(250,247,242,0.28); background: rgba(250,247,242,0.05);
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .checkbox-group input:checked ~ .checkbox-box { background: #FC6C00; border-color: #FC6C00; }
+    .checkbox-box::after { content: '✓'; font-size: 12px; color: #2A2535; display: none; }
+    .checkbox-group input:checked ~ .checkbox-box::after { display: block; }
+    .checkbox-label { font-size: 13px; font-weight: 300; color: rgba(250,247,242,0.6); line-height: 1.55; cursor: pointer; }
+    .checkbox-label a { color: rgba(252,108,0,0.85); text-decoration: underline; }
+    .checkbox-label a:hover { color: #FC6C00; }
+ 
+    .storno-hint {
+      padding: 14px 16px; border-radius: 12px; margin-bottom: 20px;
+      background: rgba(250,247,242,0.05); border: 1px solid rgba(250,247,242,0.1);
+      font-size: 12px; font-weight: 300; color: rgba(250,247,242,0.45); line-height: 1.65;
+    }
+    .storno-hint strong { color: rgba(250,247,242,0.65); font-weight: 500; }
+ 
     /* ── Submit ── */
     .submit-btn {
-      width: 100%;
-      padding: 17px;
-      border: none;
-      border-radius: 14px;
+      width: 100%; padding: 17px; border: none; border-radius: 14px;
       background: linear-gradient(135deg, #B22555 0%, #FC6C00 100%);
-      color: #FAF7F2;
-      font-family: 'Jost', sans-serif;
-      font-size: 16px;
-      font-weight: 500;
-      cursor: pointer;
-      margin-top: 10px;
-      box-shadow: 0 6px 24px rgba(178,37,85,0.38);
-      transition: transform 0.2s, box-shadow 0.2s;
+      color: #FAF7F2; font-family: 'Jost', sans-serif;
+      font-size: 16px; font-weight: 500; cursor: pointer; margin-top: 10px;
+      box-shadow: 0 6px 24px rgba(178,37,85,0.38); transition: transform 0.2s, box-shadow 0.2s;
     }
     .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(178,37,85,0.5); }
     .submit-btn:active { transform: translateY(0); }
     .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-
-    /* ── Success ── */
-    .success-msg {
-      display: none;
-      text-align: center;
-      padding: 40px 24px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(178,37,85,0.18), rgba(252,108,0,0.18));
-      border: 1px solid rgba(252,108,0,0.28);
-    }
+ 
+    /* ── Success + Payment ── */
+    .success-msg { display: none; }
     .success-msg.visible { display: block; }
-    .success-icon { font-size: 44px; margin-bottom: 18px; }
-    .success-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 24px;
-      color: #FAF7F2;
-      margin-bottom: 12px;
+    .success-step {
+      text-align: center; padding: 32px 24px; border-radius: 18px; margin-bottom: 16px;
+      border: 1px solid rgba(252,199,0,0.2); background: rgba(252,199,0,0.06);
     }
-    .success-text {
-      font-size: 14px;
-      font-weight: 300;
-      color: rgba(250,247,242,0.6);
-      line-height: 1.75;
+    .success-icon { font-size: 40px; margin-bottom: 14px; }
+    .success-title { font-family: 'Playfair Display', serif; font-size: 22px; color: #FAF7F2; margin-bottom: 10px; }
+    .success-text { font-size: 14px; font-weight: 300; color: rgba(250,247,242,0.6); line-height: 1.75; }
+ 
+    .payment-step {
+      padding: 24px; border-radius: 18px; margin-bottom: 16px;
+      background: linear-gradient(135deg, rgba(178,37,85,0.18), rgba(252,108,0,0.18));
+      border: 1px solid rgba(252,108,0,0.28); text-align: center;
     }
-
+    .payment-step-label {
+      font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(250,247,242,0.4); margin-bottom: 10px;
+    }
+    .payment-amount {
+      font-family: 'Playfair Display', serif; font-size: 28px;
+      font-weight: 600; color: #FAF7F2; margin-bottom: 6px;
+    }
+    .payment-note { font-size: 13px; font-weight: 300; color: rgba(250,247,242,0.5); margin-bottom: 20px; }
+    .payment-btn {
+      display: inline-block; padding: 15px 32px; border-radius: 12px;
+      background: #0070ba; color: #fff;
+      font-family: 'Jost', sans-serif; font-size: 15px; font-weight: 500;
+      text-decoration: none; transition: opacity 0.2s;
+      box-shadow: 0 4px 16px rgba(0,112,186,0.4);
+    }
+    .payment-btn:hover { opacity: 0.88; }
+    .payment-btn-stripe {
+      background: #635bff;
+      box-shadow: 0 4px 16px rgba(99,91,255,0.4);
+      margin-left: 10px;
+    }
+    .payment-info { font-size: 12px; color: rgba(250,247,242,0.3); margin-top: 14px; line-height: 1.55; }
+ 
     /* ── Footer ── */
-    .footer { text-align: center; margin-top: 44px; }
-    .footer a {
-      font-size: 12px;
-      font-weight: 300;
-      color: rgba(250,247,242,0.22);
-      text-decoration: none;
-    }
-    .footer a:hover { color: rgba(250,247,242,0.5); }
-
-    @media (prefers-reduced-motion: reduce) {
-      .orb { animation: none !important; }
-    }
+    .footer { text-align: center; margin-top: 44px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .footer a { font-size: 12px; font-weight: 300; color: rgba(250,247,242,0.25); text-decoration: none; }
+    .footer a:hover { color: rgba(250,247,242,0.55); }
+ 
+    @media (prefers-reduced-motion: reduce) { .orb { animation: none !important; } }
   </style>
 </head>
 <body>
@@ -298,7 +245,7 @@
             </span>
             </span>
             <span class="date-meta">
-              <span class="date-price">49,00 €</span>
+              <span class="date-price">43,00 €</span>
               <span class="date-tag">3 Std.</span>
               <span class="date-incl">inkl. Material</span>
             </span>
@@ -309,7 +256,7 @@
 
       <!-- Preishinweis -->
       <div class="price-info">
-        <strong>Zahlung</strong> nach Anmeldungsbestätigung per PayPal oder Überweisung. Dein Platz ist erst nach Zahlungseingang gesichert.
+        <strong>Zahlung</strong> nach Anmeldungsbestätigung per PayPal. Dein Platz ist erst nach Zahlungseingang gesichert.
       </div>
 
       <!-- Persönliche Angaben -->
