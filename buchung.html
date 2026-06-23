@@ -5,10 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Workshop buchen – Mala Creative Studio" />
   <title>Workshop buchen – Mala Creative Studio</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { background-color: #2A2535; min-height: 100vh; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background-color: #2A2535;
+      min-height: 100vh;
+    }
+
     body {
       background-color: #2A2535;
       min-height: 100vh;
@@ -18,190 +29,544 @@
       position: relative;
       overflow-x: hidden;
     }
-    .orb { position: fixed; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 0; }
-    .orb-rose  { width: 420px; height: 420px; background: #B22555; opacity: 0.13; top: -120px; left: -140px; animation: driftA 22s ease-in-out infinite; }
-    .orb-orange{ width: 320px; height: 320px; background: #FC6C00; opacity: 0.11; top: 35%; right: -100px; animation: driftB 18s ease-in-out infinite; }
-    .orb-gold  { width: 280px; height: 280px; background: #FCC700; opacity: 0.10; bottom: 80px; left: 20px; animation: driftC 25s ease-in-out infinite; }
-    @keyframes driftA { 0%,100%{transform:translate(0,0) scale(1);} 40%{transform:translate(40px,-30px) scale(1.08);} 70%{transform:translate(-20px,20px) scale(0.93);} }
-    @keyframes driftB { 0%,100%{transform:translate(0,0) scale(1);} 35%{transform:translate(-35px,25px) scale(1.06);} 65%{transform:translate(25px,-15px) scale(0.96);} }
-    @keyframes driftC { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(20px,35px) scale(1.04);} }
 
-    .container { max-width: 560px; width: 100%; margin: 0 auto; position: relative; z-index: 1; }
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .orb-rose {
+      width: 420px;
+      height: 420px;
+      background: #B22555;
+      opacity: 0.13;
+      top: -120px;
+      left: -140px;
+      animation: driftA 22s ease-in-out infinite;
+    }
+
+    .orb-orange {
+      width: 320px;
+      height: 320px;
+      background: #FC6C00;
+      opacity: 0.11;
+      top: 35%;
+      right: -100px;
+      animation: driftB 18s ease-in-out infinite;
+    }
+
+    .orb-gold {
+      width: 280px;
+      height: 280px;
+      background: #FCC700;
+      opacity: 0.10;
+      bottom: 80px;
+      left: 20px;
+      animation: driftC 25s ease-in-out infinite;
+    }
+
+    @keyframes driftA {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      40% { transform: translate(40px,-30px) scale(1.08); }
+      70% { transform: translate(-20px,20px) scale(0.93); }
+    }
+
+    @keyframes driftB {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      35% { transform: translate(-35px,25px) scale(1.06); }
+      65% { transform: translate(25px,-15px) scale(0.96); }
+    }
+
+    @keyframes driftC {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(20px,35px) scale(1.04); }
+    }
+
+    .container {
+      max-width: 560px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
 
     .back-link {
-      display: inline-flex; align-items: center; gap: 8px;
-      color: rgba(250,247,242,0.45); font-size: 13px; text-decoration: none;
-      margin-bottom: 36px; transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(250,247,242,0.45);
+      font-size: 13px;
+      text-decoration: none;
+      margin-bottom: 36px;
+      transition: color 0.2s;
     }
-    .back-link:hover { color: rgba(250,247,242,0.8); }
 
-    .header { text-align: center; margin-bottom: 44px; }
+    .back-link:hover {
+      color: rgba(250,247,242,0.8);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
     .brand-name {
-      font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 400;
-      color: rgba(250,247,242,0.35); letter-spacing: 0.12em;
-      text-transform: uppercase; margin-bottom: 14px;
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(250,247,242,0.35);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
     }
+
     .page-title {
-      font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 600;
-      color: #FAF7F2; line-height: 1.2; margin-bottom: 14px;
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: #FAF7F2;
+      line-height: 1.2;
+      margin-bottom: 14px;
     }
-    .page-subtitle { font-size: 15px; font-weight: 300; color: rgba(250,247,242,0.55); line-height: 1.7; }
+
+    .page-subtitle {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(250,247,242,0.55);
+      line-height: 1.7;
+    }
 
     .section-label {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
-      text-transform: uppercase; color: rgba(250,247,242,0.35);
-      margin-bottom: 14px; margin-top: 36px; display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250,247,242,0.35);
+      margin-bottom: 14px;
+      margin-top: 36px;
+      display: block;
     }
 
-    /* ── Date cards ── */
-    .date-list { display: flex; flex-direction: column; gap: 10px; }
-    .date-card { cursor: pointer; }
-    .date-card input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
-    .date-label {
-      display: flex; align-items: flex-start; gap: 14px;
-      padding: 16px 18px; border-radius: 14px;
-      border: 1px solid rgba(250,247,242,0.1);
-      background: rgba(250,247,242,0.05); cursor: pointer; transition: all 0.22s;
+    /* Auswahlkarten */
+    .date-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
-    .date-label:hover { background: rgba(250,247,242,0.09); border-color: rgba(250,247,242,0.22); }
+
+    .date-card {
+      cursor: pointer;
+    }
+
+    .date-card input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .date-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(250,247,242,0.1);
+      background: rgba(250,247,242,0.05);
+      cursor: pointer;
+      transition: all 0.22s;
+    }
+
+    .date-label:hover {
+      background: rgba(250,247,242,0.09);
+      border-color: rgba(250,247,242,0.22);
+    }
+
     .date-card input:checked + .date-label {
       background: linear-gradient(135deg, rgba(178,37,85,0.22), rgba(252,108,0,0.22));
       border-color: #FC6C00;
     }
+
     .radio-dot {
-      width: 18px; height: 18px; border-radius: 50%;
-      border: 2px solid rgba(250,247,242,0.28); flex-shrink: 0; margin-top: 3px;
-      display: flex; align-items: center; justify-content: center; transition: all 0.2s;
-    }
-    .date-card input:checked + .date-label .radio-dot { border-color: #FC6C00; background: #FC6C00; }
-    .radio-dot::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #2A2535; display: none; }
-    .date-card input:checked + .date-label .radio-dot::after { display: block; }
-
-    .date-info { flex: 1; min-width: 0; }
-    .date-name { display: block; font-size: 15px; font-weight: 500; color: #FAF7F2; margin-bottom: 5px; }
-    .date-desc { display: block; font-size: 13px; font-weight: 300; color: rgba(250,247,242,0.5); line-height: 1.55; }
-    .date-loc { display: block; font-size: 11px; font-weight: 400; color: rgba(252,199,0,0.7); margin-top: 5px; }
-
-    .date-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
-    .date-price {
-      font-size: 17px; font-weight: 600; color: #FAF7F2;
-      white-space: nowrap;
-    }
-    .date-tag {
-      font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px;
-      background: rgba(252,199,0,0.12); color: #FCC700; white-space: nowrap;
-    }
-    .date-incl { font-size: 10px; color: rgba(250,247,242,0.35); white-space: nowrap; }
-
-    /* ── Price info box ── */
-    .price-info {
-      margin-top: 14px; padding: 14px 16px; border-radius: 12px;
-      background: rgba(252,199,0,0.08); border: 1px solid rgba(252,199,0,0.18);
-      font-size: 13px; font-weight: 300; color: rgba(250,247,242,0.6); line-height: 1.6;
-    }
-    .price-info strong { color: rgba(252,199,0,0.9); font-weight: 500; }
-
-    /* ── Form ── */
-    .form-group { margin-bottom: 16px; }
-    .form-label {
-      display: block; font-size: 11px; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: rgba(250,247,242,0.45); margin-bottom: 7px;
-    }
-    .form-input, .form-textarea {
-      width: 100%; background: rgba(250,247,242,0.07);
-      border: 1px solid rgba(250,247,242,0.12); border-radius: 12px;
-      padding: 13px 16px; font-family: 'Jost', sans-serif;
-      font-size: 15px; font-weight: 300; color: #FAF7F2;
-      outline: none; transition: border-color 0.2s, background 0.2s; -webkit-appearance: none;
-    }
-    .form-input::placeholder, .form-textarea::placeholder { color: rgba(250,247,242,0.22); }
-    .form-input:focus, .form-textarea:focus { border-color: #FC6C00; background: rgba(250,247,242,0.1); }
-    .form-textarea { resize: vertical; min-height: 90px; }
-
-    /* ── Checkboxes ── */
-    .checkbox-group { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
-    .checkbox-group input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
-    .checkbox-box {
-      width: 20px; height: 20px; border-radius: 6px; flex-shrink: 0; margin-top: 1px;
-      border: 2px solid rgba(250,247,242,0.28); background: rgba(250,247,242,0.05);
-      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid rgba(250,247,242,0.28);
+      flex-shrink: 0;
+      margin-top: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: all 0.2s;
     }
-    .checkbox-group input:checked ~ .checkbox-box { background: #FC6C00; border-color: #FC6C00; }
-    .checkbox-box::after { content: '✓'; font-size: 12px; color: #2A2535; display: none; }
-    .checkbox-group input:checked ~ .checkbox-box::after { display: block; }
-    .checkbox-label { font-size: 13px; font-weight: 300; color: rgba(250,247,242,0.6); line-height: 1.55; cursor: pointer; }
-    .checkbox-label a { color: rgba(252,108,0,0.85); text-decoration: underline; }
-    .checkbox-label a:hover { color: #FC6C00; }
 
-    .storno-hint {
-      padding: 14px 16px; border-radius: 12px; margin-bottom: 20px;
-      background: rgba(250,247,242,0.05); border: 1px solid rgba(250,247,242,0.1);
-      font-size: 12px; font-weight: 300; color: rgba(250,247,242,0.45); line-height: 1.65;
+    .date-card input:checked + .date-label .radio-dot {
+      border-color: #FC6C00;
+      background: #FC6C00;
     }
-    .storno-hint strong { color: rgba(250,247,242,0.65); font-weight: 500; }
 
-    /* ── Submit ── */
+    .radio-dot::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #2A2535;
+      display: none;
+    }
+
+    .date-card input:checked + .date-label .radio-dot::after {
+      display: block;
+    }
+
+    .date-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .date-name {
+      display: block;
+      font-size: 15px;
+      font-weight: 500;
+      color: #FAF7F2;
+      margin-bottom: 5px;
+    }
+
+    .date-desc {
+      display: block;
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(250,247,242,0.5);
+      line-height: 1.55;
+    }
+
+    .date-loc {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      color: rgba(252,199,0,0.7);
+      margin-top: 5px;
+    }
+
+    .date-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .date-price {
+      font-size: 17px;
+      font-weight: 600;
+      color: #FAF7F2;
+      white-space: nowrap;
+    }
+
+    .date-tag {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 20px;
+      background: rgba(252,199,0,0.12);
+      color: #FCC700;
+      white-space: nowrap;
+    }
+
+    .date-incl {
+      font-size: 10px;
+      color: rgba(250,247,242,0.35);
+      white-space: nowrap;
+    }
+
+    /* Hinweise */
+    .info-box {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: rgba(252,199,0,0.08);
+      border: 1px solid rgba(252,199,0,0.18);
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(250,247,242,0.62);
+      line-height: 1.6;
+    }
+
+    .info-box strong {
+      color: rgba(252,199,0,0.9);
+      font-weight: 500;
+    }
+
+    .process-hint {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: rgba(250,247,242,0.05);
+      border: 1px solid rgba(250,247,242,0.1);
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(250,247,242,0.48);
+      line-height: 1.65;
+    }
+
+    .process-hint strong {
+      color: rgba(250,247,242,0.68);
+      font-weight: 500;
+    }
+
+    .process-hint a {
+      color: rgba(252,108,0,0.7);
+      text-decoration: underline;
+    }
+
+    /* Formular */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(250,247,242,0.45);
+      margin-bottom: 7px;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      background: rgba(250,247,242,0.07);
+      border: 1px solid rgba(250,247,242,0.12);
+      border-radius: 12px;
+      padding: 13px 16px;
+      font-family: 'Jost', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: #FAF7F2;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: rgba(250,247,242,0.22);
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: #FC6C00;
+      background: rgba(250,247,242,0.1);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    /* Checkboxes */
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .checkbox-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      border: 2px solid rgba(250,247,242,0.28);
+      background: rgba(250,247,242,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .checkbox-group input:checked ~ .checkbox-box {
+      background: #FC6C00;
+      border-color: #FC6C00;
+    }
+
+    .checkbox-box::after {
+      content: '✓';
+      font-size: 12px;
+      color: #2A2535;
+      display: none;
+    }
+
+    .checkbox-group input:checked ~ .checkbox-box::after {
+      display: block;
+    }
+
+    .checkbox-label {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(250,247,242,0.6);
+      line-height: 1.55;
+      cursor: pointer;
+    }
+
+    .checkbox-label a {
+      color: rgba(252,108,0,0.85);
+      text-decoration: underline;
+    }
+
+    .checkbox-label a:hover {
+      color: #FC6C00;
+    }
+
+    /* Button */
     .submit-btn {
-      width: 100%; padding: 17px; border: none; border-radius: 14px;
+      width: 100%;
+      padding: 17px;
+      border: none;
+      border-radius: 14px;
       background: linear-gradient(135deg, #B22555 0%, #FC6C00 100%);
-      color: #FAF7F2; font-family: 'Jost', sans-serif;
-      font-size: 16px; font-weight: 500; cursor: pointer; margin-top: 10px;
-      box-shadow: 0 6px 24px rgba(178,37,85,0.38); transition: transform 0.2s, box-shadow 0.2s;
+      color: #FAF7F2;
+      font-family: 'Jost', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 6px 24px rgba(178,37,85,0.38);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(178,37,85,0.5); }
-    .submit-btn:active { transform: translateY(0); }
-    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-    /* ── Success + Payment ── */
-    .success-msg { display: none; }
-    .success-msg.visible { display: block; }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(178,37,85,0.5);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Erfolg */
+    .success-msg {
+      display: none;
+    }
+
+    .success-msg.visible {
+      display: block;
+    }
+
     .success-step {
-      text-align: center; padding: 32px 24px; border-radius: 18px; margin-bottom: 16px;
-      border: 1px solid rgba(252,199,0,0.2); background: rgba(252,199,0,0.06);
+      text-align: center;
+      padding: 32px 24px;
+      border-radius: 18px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(252,199,0,0.2);
+      background: rgba(252,199,0,0.06);
     }
-    .success-icon { font-size: 40px; margin-bottom: 14px; }
-    .success-title { font-family: 'Playfair Display', serif; font-size: 22px; color: #FAF7F2; margin-bottom: 10px; }
-    .success-text { font-size: 14px; font-weight: 300; color: rgba(250,247,242,0.6); line-height: 1.75; }
 
-    .payment-step {
-      padding: 24px; border-radius: 18px; margin-bottom: 16px;
-      background: linear-gradient(135deg, rgba(178,37,85,0.18), rgba(252,108,0,0.18));
-      border: 1px solid rgba(252,108,0,0.28); text-align: center;
+    .success-icon {
+      font-size: 40px;
+      margin-bottom: 14px;
     }
-    .payment-step-label {
-      font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
-      color: rgba(250,247,242,0.4); margin-bottom: 10px;
-    }
-    .payment-amount {
-      font-family: 'Playfair Display', serif; font-size: 28px;
-      font-weight: 600; color: #FAF7F2; margin-bottom: 6px;
-    }
-    .payment-note { font-size: 13px; font-weight: 300; color: rgba(250,247,242,0.5); margin-bottom: 20px; }
-    .payment-btn {
-      display: inline-block; padding: 15px 32px; border-radius: 12px;
-      background: #0070ba; color: #fff;
-      font-family: 'Jost', sans-serif; font-size: 15px; font-weight: 500;
-      text-decoration: none; transition: opacity 0.2s;
-      box-shadow: 0 4px 16px rgba(0,112,186,0.4);
-    }
-    .payment-btn:hover { opacity: 0.88; }
-    .payment-btn-stripe {
-      background: #635bff;
-      box-shadow: 0 4px 16px rgba(99,91,255,0.4);
-      margin-left: 10px;
-    }
-    .payment-info { font-size: 12px; color: rgba(250,247,242,0.3); margin-top: 14px; line-height: 1.55; }
 
-    /* ── Footer ── */
-    .footer { text-align: center; margin-top: 44px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-    .footer a { font-size: 12px; font-weight: 300; color: rgba(250,247,242,0.25); text-decoration: none; }
-    .footer a:hover { color: rgba(250,247,242,0.55); }
+    .success-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: #FAF7F2;
+      margin-bottom: 10px;
+    }
 
-    @media (prefers-reduced-motion: reduce) { .orb { animation: none !important; } }
+    .success-text {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(250,247,242,0.6);
+      line-height: 1.75;
+    }
+
+    .success-text a {
+      color: rgba(252,108,0,0.85);
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 44px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer a {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(250,247,242,0.25);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: rgba(250,247,242,0.55);
+    }
+
+    @media (max-width: 520px) {
+      body {
+        padding: 32px 16px 64px;
+      }
+
+      .page-title {
+        font-size: 29px;
+      }
+
+      .date-label {
+        flex-direction: row;
+        padding: 15px;
+      }
+
+      .date-meta {
+        align-items: flex-start;
+        margin-top: 10px;
+      }
+
+      .date-label {
+        flex-wrap: wrap;
+      }
+
+      .date-info {
+        flex: 1 1 calc(100% - 32px);
+      }
+
+      .date-meta {
+        flex: 1 1 100%;
+        padding-left: 32px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .orb {
+        animation: none !important;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <div class="orb orb-rose"></div>
@@ -215,84 +580,201 @@
     <div class="header">
       <p class="brand-name">Mala Creative Studio</p>
       <h1 class="page-title">Workshop buchen</h1>
-      <p class="page-subtitle">Wähle ein Datum und melde dich an.<br>Ich freue mich auf dich.</p>
+      <p class="page-subtitle">
+        Wähle deinen Workshop, trage deine Daten ein und entscheide, wie du bezahlen möchtest.
+      </p>
     </div>
 
     <!-- BUCHUNGSFORMULAR -->
     <form id="bookingForm" action="https://formspree.io/f/mojoqrvr" method="POST">
+
       <input type="hidden" name="_subject" value="🎨 Neue Workshop-Anmeldung – Mala Creative Studio" />
       <input type="hidden" name="_language" value="de" />
 
       <!-- Workshop-Auswahl -->
-      <span class="section-label">Workshop wählen *</span>
+      <span class="section-label">1. Workshop wählen *</span>
+
       <div class="date-list">
 
         <div class="date-card">
-          <!-- ↓ Preis hier anpassen -->
-          <input type="radio" name="Workshop" id="ws1" value="Sa. 25. Juli 2026 – Intuitives Malen für Einsteiger – 45,00 €" required />
+          <input
+            type="radio"
+            name="Workshop"
+            id="ws1"
+            value="Sa. 25. Juli 2026 – Intuitives Malen für Einsteiger – 45,00 €"
+            required
+          />
+
           <label class="date-label" for="ws1">
             <span class="radio-dot"></span>
+
             <span class="date-info">
               <span class="date-name">Sa. 25. Juli 2026 · 14:00 – 17:00 Uhr</span>
-              <span class="date-desc">Intuitives Malen – Lass dich von Farben leiten, ganz ohne Vorkenntnisse. Weitere Informationen findest du auf meiner Instagramseite.</span>
-              <span class="date-loc">📍71404 Korb (Die genaue Adresse erhältst du nach deiner Anmeldung)</span>
+              <span class="date-desc">
+                Intuitives Malen – Lass dich von Farben leiten, ganz ohne Vorkenntnisse.
+                Weitere Informationen findest du auf meiner Instagramseite.
+              </span>
+              <span class="date-loc">
+                📍 71404 Korb · Die genaue Adresse erhältst du nach deiner Anmeldung.
+              </span>
             </span>
+
             <span class="date-meta">
-              <!-- ↓ Preis hier anpassen -->
               <span class="date-price">45,00 €</span>
               <span class="date-tag">3 Std.</span>
               <span class="date-incl">pro Person, inkl. Material</span>
             </span>
           </label>
         </div>
+
       </div>
 
-      <!-- Preishinweis -->
-      <div class="price-info">
-        <strong>Zahlung</strong> nach Anmeldungsbestätigung per PayPal oder Überweisung. Dein Platz ist erst nach Zahlungseingang gesichert.
+      <div class="info-box">
+        <strong>Preis:</strong> 45,00 € pro Person, inklusive Material.
+        Dein Platz wird nach deiner Anmeldung vorgemerkt.
       </div>
 
       <!-- Persönliche Angaben -->
-      <span class="section-label" style="margin-top:32px;">Deine Angaben</span>
+      <span class="section-label">2. Deine Angaben</span>
 
       <div class="form-group">
         <label class="form-label" for="name">Name *</label>
-        <input class="form-input" type="text" id="name" name="Name" placeholder="Dein vollständiger Name" required />
+        <input
+          class="form-input"
+          type="text"
+          id="name"
+          name="Name"
+          placeholder="Dein vollständiger Name"
+          required
+        />
       </div>
+
       <div class="form-group">
         <label class="form-label" for="email">E-Mail *</label>
-        <input class="form-input" type="email" id="email" name="E-mail" placeholder="deine@email.de" required />
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="phone">Telefon (optional)</label>
-        <input class="form-input" type="tel" id="phone" name="Phone" placeholder="+49 ..." />
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="message">Nachricht (optional)</label>
-        <textarea class="form-textarea" id="message" name="Message" placeholder="Fragen, Wünsche ..."></textarea>
-      </div>
-
-      <!-- Stornierungshinweis -->
-      <div class="storno-hint">
-        <strong>Stornierung:</strong> Bis 14 Tage vor dem Workshop kostenlos. Bis 7 Tage davor 50 % Rückerstattung. Danach kein Anspruch auf Rückerstattung. Details in unseren <a href="agb.html" style="color:rgba(252,108,0,0.7);">AGB</a>.
+        <input
+          class="form-input"
+          type="email"
+          id="email"
+          name="E-Mail"
+          placeholder="deine@email.de"
+          required
+        />
       </div>
 
-      <!-- Rechtliche Zustimmung -->
-      <span class="section-label" style="margin-top:4px;">Zustimmung *</span>
+      <div class="form-group">
+        <label class="form-label" for="phone">Telefon optional</label>
+        <input
+          class="form-input"
+          type="tel"
+          id="phone"
+          name="Telefon"
+          placeholder="+49 ..."
+        />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="message">Nachricht optional</label>
+        <textarea
+          class="form-textarea"
+          id="message"
+          name="Nachricht"
+          placeholder="Fragen, Wünsche oder Hinweise ..."
+        ></textarea>
+      </div>
+
+      <!-- Zahlungsart -->
+      <span class="section-label">3. Zahlungsart wählen *</span>
+
+      <div class="date-list">
+
+        <div class="date-card">
+          <input
+            type="radio"
+            name="Zahlungsart"
+            id="payment_paypal"
+            value="PayPal"
+            required
+          />
+
+          <label class="date-label" for="payment_paypal">
+            <span class="radio-dot"></span>
+
+            <span class="date-info">
+              <span class="date-name">PayPal</span>
+              <span class="date-desc">
+                Nach dem Absenden deiner Anmeldung wirst du direkt zu PayPal weitergeleitet.
+                Bitte schließe die Zahlung dort ab.
+              </span>
+            </span>
+
+            <span class="date-meta">
+              <span class="date-price">45,00 €</span>
+              <span class="date-tag">direkt zahlen</span>
+            </span>
+          </label>
+        </div>
+
+        <div class="date-card">
+          <input
+            type="radio"
+            name="Zahlungsart"
+            id="payment_vor_ort"
+            value="Zahlung vor Ort"
+            required
+          />
+
+          <label class="date-label" for="payment_vor_ort">
+            <span class="radio-dot"></span>
+
+            <span class="date-info">
+              <span class="date-name">Zahlung vor Ort</span>
+              <span class="date-desc">
+                Deine Buchung wird nach dem Absenden abgeschlossen.
+                Du bezahlst den Betrag am Workshoptag vor Ort.
+              </span>
+            </span>
+
+            <span class="date-meta">
+              <span class="date-price">45,00 €</span>
+              <span class="date-tag">vor Ort</span>
+            </span>
+          </label>
+        </div>
+
+      </div>
+
+      <div class="process-hint">
+        <strong>Hinweis:</strong>
+        Wenn du PayPal auswählst, wird deine Anmeldung zuerst übermittelt und du wirst danach zur Zahlung weitergeleitet.
+        Bei Zahlung vor Ort ist deine Buchung nach dem Absenden abgeschlossen.
+      </div>
+
+      <!-- Rechtliche Hinweise -->
+      <span class="section-label">4. Hinweise & Zustimmung *</span>
+
+      <div class="process-hint">
+        <strong>Stornierung:</strong>
+        Bis 14 Tage vor dem Workshop ist eine Stornierung kostenlos.
+        Bis 7 Tage vorher erhältst du 50 % Rückerstattung.
+        Danach besteht kein Anspruch auf Rückerstattung.
+        Details findest du in den <a href="agb.html">AGB</a>.
+      </div>
 
       <label class="checkbox-group">
-        <input type="checkbox" name="agb_accepted" value="Ja" required />
+        <input type="checkbox" name="AGB akzeptiert" value="Ja" required />
         <span class="checkbox-box"></span>
         <span class="checkbox-label">
-          Ich habe die <a href="agb.html" target="_blank">AGB</a> gelesen und akzeptiere sie. Ich stimme den Stornierungsbedingungen zu. *
+          Ich habe die <a href="agb.html" target="_blank">AGB</a> gelesen und akzeptiere sie.
+          Ich stimme den Stornierungsbedingungen zu. *
         </span>
       </label>
 
       <label class="checkbox-group">
-        <input type="checkbox" name="datenschutz_accepted" value="Ja" required />
+        <input type="checkbox" name="Datenschutz akzeptiert" value="Ja" required />
         <span class="checkbox-box"></span>
         <span class="checkbox-label">
-          Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und bin einverstanden, dass meine Daten zur Bearbeitung meiner Anmeldung gespeichert werden. *
+          Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen
+          und bin einverstanden, dass meine Daten zur Bearbeitung meiner Anmeldung gespeichert werden. *
         </span>
       </label>
 
@@ -302,65 +784,32 @@
 
     </form>
 
-        <!-- Erfolgsmeldung + Zahlungsschritt -->
+    <!-- Erfolgsmeldung bei Zahlung vor Ort -->
     <div class="success-msg" id="successMsg">
- 
+      <div class="success-step">
+        <div class="success-icon">✓</div>
+        <p class="success-title">Buchung abgeschlossen!</p>
+        <p class="success-text">
+          Vielen Dank für deine Anmeldung.<br>
+          Du erhältst in Kürze eine Bestätigungs-E-Mail von mir.<br>
+          Die Zahlung erfolgt am Workshoptag vor Ort.
+        </p>
+      </div>
+    </div>
+
+    <!-- Erfolgsmeldung vor PayPal-Weiterleitung -->
+    <div class="success-msg" id="paypalMsg">
       <div class="success-step">
         <div class="success-icon">✓</div>
         <p class="success-title">Anmeldung erhalten!</p>
         <p class="success-text">
-          Du erhältst in Kürze eine Bestätigungs-E-Mail von mir.<br>
-          Bitte schließe jetzt deine Buchung mit der Zahlung ab.
+          Du wirst jetzt zu PayPal weitergeleitet.<br>
+          Bitte schließe dort die Zahlung ab.
         </p>
       </div>
- 
-      <div class="payment-step">
-        <p class="payment-step-label">Schritt 2 – Zahlung</p>
-        <!-- ↓ Preis hier anpassen -->
-        <p class="payment-amount">45,00 €</p>
-        <p class="payment-note">pro Person · inkl. Material</p>
- 
-        <!-- PayPal -->
-        <!-- ↓ Ersetze DEIN-PAYPAL-NUTZERNAME mit deinem PayPal.me Nutzernamen -->
-        <a href="https://www.paypal.me/MWollensak/45" target="_blank" class="payment-btn">
-          Jetzt per PayPal zahlen
-        </a>
- 
-        <!-- Trennlinie -->
-        <div class="payment-divider">
-          <span>oder per Überweisung</span>
-        </div>
- 
-        <!-- Bankverbindung -->
-        <!-- ↓ Deine Bankdaten eintragen -->
-        <div class="bank-details">
-          <div class="bank-row">
-            <span class="bank-label">Empfänger</span>
-            <span class="bank-value">Madita Wollensak</span>
-          </div>
-          <div class="bank-row">
-            <span class="bank-label">IBAN</span>
-            <span class="bank-value">[DEINE IBAN]</span>
-          </div>
-          <div class="bank-row">
-            <span class="bank-label">BIC</span>
-            <span class="bank-value">[DEINE BIC]</span>
-          </div>
-          <div class="bank-row">
-            <span class="bank-label">Verwendungszweck</span>
-            <span class="bank-value">Workshop Mala + dein Name</span>
-          </div>
-        </div>
- 
-        <p class="payment-info">
-          Dein Platz ist nach Zahlungseingang gesichert.<br>
-          Fragen? <a href="mailto:mala.studio@gmx.de" style="color:rgba(252,108,0,0.7);">mala.studio@gmx.de</a>
-        </p>
-      </div>
- 
     </div>
-    
-  <div class="footer">
+
+    <div class="footer">
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
       <a href="agb.html">AGB</a>
@@ -372,25 +821,58 @@
   <script>
     document.getElementById('bookingForm').addEventListener('submit', async function(e) {
       e.preventDefault();
+
       const form = e.target;
       const btn = document.getElementById('submitBtn');
-      btn.disabled = true;
-      btn.textContent = 'Wird gesendet …';
       const data = new FormData(form);
+      const zahlungsart = data.get('Zahlungsart');
+
+      const paypalUrl = 'https://www.paypal.me/MWollensak/45';
+
+      btn.disabled = true;
+      btn.textContent = 'Anmeldung wird gesendet …';
+
       try {
-        const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
-        if (res.ok) {
-          form.style.display = 'none';
-          document.getElementById('successMsg').classList.add('visible');
-        } else {
-          btn.disabled = false;
-          btn.textContent = 'Verbindlich anmelden →';
-          alert('Es gab ein Problem. Bitte schreib mir direkt:\nmala.studio@gmx.de');
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (!res.ok) {
+          throw new Error('Formspree-Fehler');
         }
-      } catch {
+
+        form.style.display = 'none';
+
+        if (zahlungsart === 'PayPal') {
+          document.getElementById('paypalMsg').classList.add('visible');
+
+          setTimeout(function() {
+            window.location.href = paypalUrl;
+          }, 1200);
+
+          return;
+        }
+
+        if (zahlungsart === 'Zahlung vor Ort') {
+          document.getElementById('successMsg').classList.add('visible');
+          return;
+        }
+
+        throw new Error('Ungültige Zahlungsart');
+
+      } catch (error) {
         btn.disabled = false;
         btn.textContent = 'Verbindlich anmelden →';
-        alert('Keine Verbindung. Bitte schreib mir direkt:\nmala.studio@gmx.de');
+
+        alert(
+          'Es gab ein Problem beim Senden deiner Anmeldung.\n' +
+          'Bitte schreib mir direkt an:\n' +
+          'mala.studio@gmx.de'
+        );
       }
     });
   </script>
