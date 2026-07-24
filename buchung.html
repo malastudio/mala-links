@@ -524,42 +524,16 @@
     }
 
     @media (max-width: 520px) {
-      body {
-        padding: 32px 16px 64px;
-      }
-
-      .page-title {
-        font-size: 29px;
-      }
-
-      .date-label {
-        flex-direction: row;
-        padding: 15px;
-      }
-
-      .date-meta {
-        align-items: flex-start;
-        margin-top: 10px;
-      }
-
-      .date-label {
-        flex-wrap: wrap;
-      }
-
-      .date-info {
-        flex: 1 1 calc(100% - 32px);
-      }
-
-      .date-meta {
-        flex: 1 1 100%;
-        padding-left: 32px;
-      }
+      body { padding: 32px 16px 64px; }
+      .page-title { font-size: 29px; }
+      .date-label { flex-direction: row; padding: 15px; flex-wrap: wrap; }
+      .date-meta { align-items: flex-start; margin-top: 10px; }
+      .date-info { flex: 1 1 calc(100% - 32px); }
+      .date-meta { flex: 1 1 100%; padding-left: 32px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .orb {
-        animation: none !important;
-      }
+      .orb { animation: none !important; }
     }
   </style>
 </head>
@@ -589,39 +563,10 @@
 
       <span class="section-label">1. Workshop wählen *</span>
 
-      <div class="date-list">
-
-        <div class="date-card">
-          <input
-            type="radio"
-            name="Workshop"
-            id="ws1"
-            value="Sa. 25. Juli 2026 – Intuitives Malen für Einsteiger – 45,00 €"
-            required
-          />
-
-          <label class="date-label" for="ws1">
-            <span class="radio-dot"></span>
-
-            <span class="date-info">
-              <span class="date-name">Sa. 25. Juli 2026 · 14:00 – 17:00 Uhr</span>
-              <span class="date-desc">
-                Intuitives Malen – Lass dich von Farben leiten, ganz ohne Vorkenntnisse.
-                Weitere Informationen findest du auf meiner Instagramseite.
-              </span>
-              <span class="date-loc">
-                📍 71404 Korb · Die genaue Adresse erhältst du nach deiner Anmeldung.
-              </span>
-            </span>
-
-            <span class="date-meta">
-              <span class="date-price">45,00 €</span>
-              <span class="date-tag">3 Std.</span>
-              <span class="date-incl">pro Person, inkl. Material</span>
-            </span>
-          </label>
-        </div>
-
+      <div class="date-list" id="workshopList">
+        <p style="color:rgba(250,247,242,0.4);font-size:14px;text-align:center;padding:20px;">
+          Termine werden geladen …
+        </p>
       </div>
 
       <div class="info-box">
@@ -632,47 +577,22 @@
 
       <div class="form-group">
         <label class="form-label" for="name">Name *</label>
-        <input
-          class="form-input"
-          type="text"
-          id="name"
-          name="Name"
-          placeholder="Dein vollständiger Name"
-          required
-        />
+        <input class="form-input" type="text" id="name" name="Name" placeholder="Dein vollständiger Name" required />
       </div>
 
       <div class="form-group">
         <label class="form-label" for="email">E-Mail *</label>
-        <input
-          class="form-input"
-          type="email"
-          id="email"
-          name="E-Mail"
-          placeholder="deine@email.de"
-          required
-        />
+        <input class="form-input" type="email" id="email" name="E-Mail" placeholder="deine@email.de" required />
       </div>
 
       <div class="form-group">
         <label class="form-label" for="phone">Telefon optional</label>
-        <input
-          class="form-input"
-          type="tel"
-          id="phone"
-          name="Telefon"
-          placeholder="+49 ..."
-        />
+        <input class="form-input" type="tel" id="phone" name="Telefon" placeholder="+49 ..." />
       </div>
 
       <div class="form-group">
         <label class="form-label" for="message">Nachricht optional</label>
-        <textarea
-          class="form-textarea"
-          id="message"
-          name="Nachricht"
-          placeholder="Fragen, Wünsche oder Hinweise ..."
-        ></textarea>
+        <textarea class="form-textarea" id="message" name="Nachricht" placeholder="Fragen, Wünsche oder Hinweise ..."></textarea>
       </div>
 
       <span class="section-label">3. Zahlungsart wählen *</span>
@@ -680,17 +600,9 @@
       <div class="date-list">
 
         <div class="date-card">
-          <input
-            type="radio"
-            name="Zahlungsart"
-            id="payment_paypal"
-            value="PayPal"
-            required
-          />
-
+          <input type="radio" name="Zahlungsart" id="payment_paypal" value="PayPal" required />
           <label class="date-label" for="payment_paypal">
             <span class="radio-dot"></span>
-
             <span class="date-info">
               <span class="date-name">PayPal</span>
               <span class="date-desc">
@@ -698,7 +610,6 @@
                 Bitte schließe die Zahlung dort ab.
               </span>
             </span>
-
             <span class="date-meta">
               <span class="date-price">45,00 €</span>
               <span class="date-tag">direkt zahlen</span>
@@ -707,17 +618,9 @@
         </div>
 
         <div class="date-card">
-          <input
-            type="radio"
-            name="Zahlungsart"
-            id="payment_vor_ort"
-            value="Zahlung vor Ort"
-            required
-          />
-
+          <input type="radio" name="Zahlungsart" id="payment_vor_ort" value="Zahlung vor Ort" required />
           <label class="date-label" for="payment_vor_ort">
             <span class="radio-dot"></span>
-
             <span class="date-info">
               <span class="date-name">Zahlung vor Ort</span>
               <span class="date-desc">
@@ -725,7 +628,6 @@
                 Du bezahlst den Betrag am Workshoptag vor Ort.
               </span>
             </span>
-
             <span class="date-meta">
               <span class="date-price">45,00 €</span>
               <span class="date-tag">vor Ort</span>
@@ -819,6 +721,58 @@
   </div>
 
   <script>
+    // ── Workshops dynamisch aus workshops.json laden ──
+    async function loadWorkshops() {
+      try {
+        const res = await fetch('workshops.json?v=' + Date.now());
+        const workshops = await res.json();
+        const visible = workshops.filter(w => w.status !== 'hidden');
+        const list = document.getElementById('workshopList');
+
+        if (visible.length === 0) {
+          list.innerHTML = '<p style="color:rgba(250,247,242,0.45);font-size:14px;text-align:center;padding:20px;">Aktuell sind keine Termine verfügbar.</p>';
+          return;
+        }
+
+        list.innerHTML = visible.map((w, i) => {
+          const isBooked = w.status === 'ausgebucht';
+          return `
+            <div class="date-card">
+              <input
+                type="radio"
+                name="Workshop"
+                id="ws${i}"
+                value="${w.date} – ${w.title} – ${w.price} €"
+                ${isBooked ? 'disabled' : ''}
+                ${i === 0 && !isBooked ? 'required' : ''}
+              />
+              <label class="date-label" for="ws${i}" ${isBooked ? 'style="opacity:0.55;"' : ''}>
+                <span class="radio-dot"></span>
+                <span class="date-info">
+                  <span class="date-name">${w.date} · ${w.time}</span>
+                  <span class="date-desc">${w.description}</span>
+                  <span class="date-loc">📍 ${w.location}</span>
+                  ${isBooked ? '<span class="date-loc" style="color:#B22555;margin-top:4px;">Ausgebucht</span>' : ''}
+                </span>
+                <span class="date-meta">
+                  <span class="date-price">${w.price} €</span>
+                  <span class="date-tag">${w.duration}</span>
+                  <span class="date-incl">pro Person, inkl. Material</span>
+                </span>
+              </label>
+            </div>`;
+        }).join('');
+
+      } catch(e) {
+        document.getElementById('workshopList').innerHTML =
+          '<p style="color:rgba(250,247,242,0.45);font-size:14px;text-align:center;padding:20px;">Termine konnten nicht geladen werden.<br>Bitte versuche es später erneut.</p>';
+      }
+    }
+
+    loadWorkshops();
+  </script>
+
+  <script>
     document.getElementById('bookingForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
@@ -826,7 +780,6 @@
       const btn = document.getElementById('submitBtn');
       const data = new FormData(form);
       const zahlungsart = data.get('Zahlungsart');
-
       const paypalUrl = 'https://www.paypal.me/MWollensak/45';
 
       btn.disabled = true;
@@ -836,24 +789,16 @@
         const res = await fetch(form.action, {
           method: 'POST',
           body: data,
-          headers: {
-            'Accept': 'application/json'
-          }
+          headers: { 'Accept': 'application/json' }
         });
 
-        if (!res.ok) {
-          throw new Error('Formspree-Fehler');
-        }
+        if (!res.ok) throw new Error('Formspree-Fehler');
 
         form.style.display = 'none';
 
         if (zahlungsart === 'PayPal') {
           document.getElementById('paypalMsg').classList.add('visible');
-
-          setTimeout(function() {
-            window.location.href = paypalUrl;
-          }, 1200);
-
+          setTimeout(function() { window.location.href = paypalUrl; }, 1200);
           return;
         }
 
@@ -867,12 +812,7 @@
       } catch (error) {
         btn.disabled = false;
         btn.textContent = 'Verbindlich anmelden →';
-
-        alert(
-          'Es gab ein Problem beim Senden deiner Anmeldung.\n' +
-          'Bitte schreib mir direkt an:\n' +
-          'mala.studio@gmx.de'
-        );
+        alert('Es gab ein Problem beim Senden deiner Anmeldung.\nBitte schreib mir direkt an:\nmala.studio@gmx.de');
       }
     });
   </script>
