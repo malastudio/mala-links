@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin – Mala Creative Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: #2A2535; min-height: 100vh; }
+    body { background: #2A2535; color: #FAF7F2; font-family: 'Jost', sans-serif; padding: 40px 20px 72px; }
+    .container { max-width: 620px; margin: 0 auto; }
+
+    /* ── Login ── */
+    #loginScreen {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 20px; text-align: center;
+    }
+    #loginScreen h1 { font-family: 'Playfair Display', serif; font-size: 26px; color: #FAF7F2; margin-bottom: 6px; }
+    #loginScreen p { font-size: 14px; color: rgba(250,247,242,0.45); margin-bottom: 10px; }
+    .login-box { background: rgba(250,247,242,0.06); border: 1px solid rgba(250,247,242,0.12); border-radius: 18px; padding: 32px; width: 100%; max-width: 360px; }
+    .login-label { display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,247,242,0.4); margin-bottom: 8px; }
+    .login-input {
+      width: 100%; background: rgba(250,247,242,0.07); border: 1px solid rgba(250,247,242,0.12);
+      border-radius: 10px; padding: 12px 14px; font-family: 'Jost', sans-serif;
+      font-size: 15px; color: #FAF7F2; outline: none; margin-bottom: 16px;
+    }
+    .login-input:focus { border-color: #FC6C00; }
+    .login-error { font-size: 13px; color: #B22555; margin-top: -8px; margin-bottom: 12px; display: none; }
+
+    /* ── Buttons ── */
+    .btn-primary {
+      width: 100%; padding: 14px; border: none; border-radius: 12px;
+      background: linear-gradient(135deg, #B22555, #FC6C00);
+      color: #FAF7F2; font-family: 'Jost', sans-serif; font-size: 15px;
+      font-weight: 500; cursor: pointer; transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-secondary {
+      padding: 10px 18px; border-radius: 10px; border: 1px solid rgba(250,247,242,0.2);
+      background: transparent; color: rgba(250,247,242,0.7); font-family: 'Jost', sans-serif;
+      font-size: 13px; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(250,247,242,0.08); color: #FAF7F2; }
+    .btn-export {
+      width: 100%; padding: 16px; border: none; border-radius: 12px;
+      background: linear-gradient(135deg, #B22555, #FC6C00);
+      color: #FAF7F2; font-family: 'Jost', sans-serif; font-size: 15px;
+      font-weight: 500; cursor: pointer; margin-top: 8px; transition: opacity 0.2s;
+      box-shadow: 0 6px 24px rgba(178,37,85,0.35);
+    }
+    .btn-export:hover { opacity: 0.88; }
+    .btn-add {
+      width: 100%; padding: 14px; border-radius: 12px;
+      border: 1px dashed rgba(250,247,242,0.2); background: transparent;
+      color: rgba(250,247,242,0.5); font-family: 'Jost', sans-serif;
+      font-size: 14px; cursor: pointer; transition: all 0.2s; margin-bottom: 16px;
+    }
+    .btn-add:hover { border-color: rgba(250,247,242,0.4); color: #FAF7F2; background: rgba(250,247,242,0.04); }
+    .btn-delete { padding: 7px 14px; border-radius: 8px; border: 1px solid rgba(178,37,85,0.3); background: rgba(178,37,85,0.1); color: rgba(250,247,242,0.5); font-family: 'Jost', sans-serif; font-size: 12px; cursor: pointer; transition: all 0.2s; }
+    .btn-delete:hover { background: rgba(178,37,85,0.25); color: #FAF7F2; border-color: #B22555; }
+
+    /* ── Header ── */
+    #adminPanel { display: none; }
+    .admin-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 36px; flex-wrap: wrap; gap: 12px; }
+    .admin-title { font-family: 'Playfair Display', serif; font-size: 24px; color: #FAF7F2; }
+    .admin-subtitle { font-size: 13px; color: rgba(250,247,242,0.4); margin-top: 4px; }
+
+    /* ── Workshop Cards ── */
+    .workshop-card {
+      background: rgba(250,247,242,0.05); border: 1px solid rgba(250,247,242,0.1);
+      border-radius: 16px; padding: 20px; margin-bottom: 14px; transition: border-color 0.2s;
+    }
+    .workshop-card.status-active   { border-left: 3px solid #4CAF50; }
+    .workshop-card.status-ausgebucht { border-left: 3px solid #FCC700; }
+    .workshop-card.status-hidden   { border-left: 3px solid rgba(250,247,242,0.15); opacity: 0.55; }
+
+    .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+    .card-title-text { font-size: 15px; font-weight: 500; color: #FAF7F2; }
+    .card-date-text  { font-size: 13px; color: rgba(250,247,242,0.45); margin-top: 3px; }
+
+    /* Status toggle */
+    .status-toggle { display: flex; gap: 6px; flex-shrink: 0; }
+    .status-btn {
+      padding: 5px 11px; border-radius: 20px; border: 1px solid rgba(250,247,242,0.15);
+      background: transparent; color: rgba(250,247,242,0.4); font-family: 'Jost', sans-serif;
+      font-size: 11px; font-weight: 500; cursor: pointer; transition: all 0.18s; white-space: nowrap;
+    }
+    .status-btn.active-btn   { background: rgba(76,175,80,0.2);  border-color: #4CAF50; color: #4CAF50; }
+    .status-btn.booked-btn   { background: rgba(252,199,0,0.2);  border-color: #FCC700; color: #FCC700; }
+    .status-btn.hidden-btn   { background: rgba(250,247,242,0.08); border-color: rgba(250,247,242,0.25); color: rgba(250,247,242,0.5); }
+
+    /* Edit fields */
+    .fields-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+    .field-full { grid-column: 1 / -1; }
+    .field-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,247,242,0.35); margin-bottom: 5px; display: block; }
+    .field-input, .field-textarea {
+      width: 100%; background: rgba(250,247,242,0.06); border: 1px solid rgba(250,247,242,0.1);
+      border-radius: 8px; padding: 9px 12px; font-family: 'Jost', sans-serif;
+      font-size: 13px; color: #FAF7F2; outline: none; transition: border-color 0.2s;
+    }
+    .field-input:focus, .field-textarea:focus { border-color: #FC6C00; }
+    .field-textarea { resize: vertical; min-height: 60px; }
+
+    .card-footer { display: flex; justify-content: flex-end; margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(250,247,242,0.07); }
+
+    /* ── Export section ── */
+    .export-section { margin-top: 32px; padding: 24px; border-radius: 16px; background: rgba(250,247,242,0.04); border: 1px solid rgba(250,247,242,0.08); }
+    .export-title { font-size: 13px; font-weight: 500; color: rgba(250,247,242,0.6); margin-bottom: 8px; }
+    .export-steps { font-size: 12px; color: rgba(250,247,242,0.35); line-height: 1.9; margin-bottom: 16px; }
+    .export-steps span { color: rgba(252,108,0,0.8); font-weight: 500; }
+
+    /* ── Password change ── */
+    .pw-section { margin-top: 32px; padding: 20px; border-radius: 14px; background: rgba(250,247,242,0.03); border: 1px solid rgba(250,247,242,0.07); }
+    .pw-title { font-size: 12px; color: rgba(250,247,242,0.35); margin-bottom: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .pw-row { display: flex; gap: 10px; align-items: flex-end; }
+    .pw-row .field-input { flex: 1; }
+
+    /* ── Toast ── */
+    .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%); background: #4CAF50; color: #fff; padding: 12px 24px; border-radius: 30px; font-size: 14px; font-weight: 500; opacity: 0; transition: opacity 0.3s; pointer-events: none; white-space: nowrap; z-index: 999; }
+    .toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- ── Login ── -->
+  <div id="loginScreen">
+    <div>
+      <h1>Mala Creative Studio</h1>
+      <p>Workshop-Verwaltung</p>
+    </div>
+    <div class="login-box">
+      <label class="login-label" for="pw">Passwort</label>
+      <input class="login-input" type="password" id="pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')login()" />
+      <p class="login-error" id="loginError">Falsches Passwort</p>
+      <button class="btn-primary" onclick="login()">Anmelden</button>
+    </div>
+  </div>
+
+  <!-- ── Admin Panel ── -->
+  <div id="adminPanel">
+    <div class="container">
+
+      <div class="admin-header">
+        <div>
+          <h1 class="admin-title">Workshop-Verwaltung</h1>
+          <p class="admin-subtitle">Änderungen → Exportieren → workshops.json auf GitHub hochladen</p>
+        </div>
+        <button class="btn-secondary" onclick="logout()">Abmelden</button>
+      </div>
+
+      <!-- Workshop list -->
+      <div id="workshopList"></div>
+
+      <!-- Add new -->
+      <button class="btn-add" onclick="addWorkshop()">+ Neuen Workshop hinzufügen</button>
+
+      <!-- Export -->
+      <div class="export-section">
+        <p class="export-title">Änderungen speichern</p>
+        <p class="export-steps">
+          1. Klick auf <span>„Exportieren"</span><br>
+          2. Datei <span>workshops.json</span> wird heruntergeladen<br>
+          3. Datei auf <span>GitHub hochladen</span> (bestehende ersetzen)<br>
+          4. Seite ist nach ca. 1 Minute aktualisiert ✓
+        </p>
+        <button class="btn-export" onclick="exportJSON()">⬇ Exportieren – workshops.json</button>
+      </div>
+
+      <!-- Password change -->
+      <div class="pw-section">
+        <p class="pw-title">Passwort ändern</p>
+        <div class="pw-row">
+          <input class="field-input" type="password" id="newPw" placeholder="Neues Passwort" />
+          <button class="btn-secondary" onclick="changePassword()">Speichern</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const DEFAULT_PW = 'mala2025';
+    let workshops = [];
+
+    // ── Auth ──
+    function getStoredPw() { return localStorage.getItem('mala_admin_pw') || DEFAULT_PW; }
+    function login() {
+      const input = document.getElementById('pw').value;
+      if (input === getStoredPw()) {
+        document.getElementById('loginScreen').style.display = 'none';
+        document.getElementById('adminPanel').style.display = 'block';
+        loadWorkshops();
+      } else {
+        document.getElementById('loginError').style.display = 'block';
+      }
+    }
+    function logout() {
+      document.getElementById('adminPanel').style.display = 'none';
+      document.getElementById('loginScreen').style.display = 'flex';
+      document.getElementById('pw').value = '';
+    }
+    function changePassword() {
+      const v = document.getElementById('newPw').value.trim();
+      if (!v) return;
+      localStorage.setItem('mala_admin_pw', v);
+      document.getElementById('newPw').value = '';
+      showToast('Passwort gespeichert ✓');
+    }
+
+    // ── Load ──
+    async function loadWorkshops() {
+      try {
+        const res = await fetch('workshops.json?v=' + Date.now());
+        workshops = await res.json();
+      } catch(e) {
+        workshops = [];
+      }
+      renderList();
+    }
+
+    // ── Render ──
+    function renderList() {
+      const el = document.getElementById('workshopList');
+      el.innerHTML = workshops.map((w, i) => `
+        <div class="workshop-card status-${w.status}" id="card-${i}">
+          <div class="card-top">
+            <div>
+              <div class="card-title-text">${w.title || 'Neuer Workshop'}</div>
+              <div class="card-date-text">${w.date} · ${w.time}</div>
+            </div>
+            <div class="status-toggle">
+              <button class="status-btn ${w.status==='active'?'active-btn':''}"
+                onclick="setStatus(${i},'active')">Aktiv</button>
+              <button class="status-btn ${w.status==='ausgebucht'?'booked-btn':''}"
+                onclick="setStatus(${i},'ausgebucht')">Ausgebucht</button>
+              <button class="status-btn ${w.status==='hidden'?'hidden-btn':''}"
+                onclick="setStatus(${i},'hidden')">Ausblenden</button>
+            </div>
+          </div>
+
+          <div class="fields-grid">
+            <div>
+              <label class="field-label">Datum</label>
+              <input class="field-input" value="${w.date}" onchange="update(${i},'date',this.value)" />
+            </div>
+            <div>
+              <label class="field-label">Uhrzeit</label>
+              <input class="field-input" value="${w.time}" onchange="update(${i},'time',this.value)" />
+            </div>
+            <div class="field-full">
+              <label class="field-label">Titel</label>
+              <input class="field-input" value="${w.title}" onchange="update(${i},'title',this.value)" />
+            </div>
+            <div class="field-full">
+              <label class="field-label">Beschreibung</label>
+              <textarea class="field-textarea" onchange="update(${i},'description',this.value)">${w.description}</textarea>
+            </div>
+            <div class="field-full">
+              <label class="field-label">Ort / Adresse</label>
+              <input class="field-input" value="${w.location}" onchange="update(${i},'location',this.value)" />
+            </div>
+            <div>
+              <label class="field-label">Preis (€)</label>
+              <input class="field-input" value="${w.price}" onchange="update(${i},'price',this.value)" />
+            </div>
+            <div>
+              <label class="field-label">Dauer</label>
+              <input class="field-input" value="${w.duration}" onchange="update(${i},'duration',this.value)" />
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <button class="btn-delete" onclick="deleteWorkshop(${i})">Workshop löschen</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ── Actions ──
+    function update(i, field, value) {
+      workshops[i][field] = value;
+    }
+    function setStatus(i, status) {
+      workshops[i].status = status;
+      renderList();
+    }
+    function deleteWorkshop(i) {
+      if (!confirm('Workshop wirklich löschen?')) return;
+      workshops.splice(i, 1);
+      renderList();
+    }
+    function addWorkshop() {
+      workshops.push({
+        id: 'ws' + Date.now(),
+        date: 'Sa. TT. Monat JJJJ',
+        time: '10:00 – 13:00 Uhr',
+        title: 'Neuer Workshop',
+        description: 'Beschreibung eintragen.',
+        location: 'Adresse eintragen',
+        price: '49,00',
+        duration: '3 Std.',
+        status: 'active'
+      });
+      renderList();
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+    function exportJSON() {
+      const json = JSON.stringify(workshops, null, 2);
+      const blob = new Blob([json], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'workshops.json';
+      a.click();
+      showToast('workshops.json heruntergeladen ✓');
+    }
+
+    // ── Toast ──
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2800);
+    }
+  </script>
+
+</body>
+</html>
