@@ -611,7 +611,7 @@
               </span>
             </span>
             <span class="date-meta">
-              <span class="date-price">45,00 €</span>
+              <span class="date-price" id="price-paypal">45,00 €</span>
               <span class="date-tag">direkt zahlen</span>
             </span>
           </label>
@@ -629,7 +629,7 @@
               </span>
             </span>
             <span class="date-meta">
-              <span class="date-price">45,00 €</span>
+              <span class="date-price" id="price-vor-ort">45,00 €</span>
               <span class="date-tag">vor Ort</span>
             </span>
           </label>
@@ -743,6 +743,7 @@
                 name="Workshop"
                 id="ws${i}"
                 value="${w.date} – ${w.title} – ${w.price} €"
+                data-price="${w.price}"
                 ${isBooked ? 'disabled' : ''}
                 ${i === 0 && !isBooked ? 'required' : ''}
               />
@@ -763,6 +764,26 @@
             </div>`;
         }).join('');
 
+        // Preis in Zahlungsart automatisch aktualisieren
+        function updatePaymentPrices(price) {
+          document.getElementById('price-paypal').textContent   = price + ' €';
+          document.getElementById('price-vor-ort').textContent  = price + ' €';
+        }
+
+        // Ersten aktiven Workshop vorauswählen & Preis setzen
+        const firstActive = list.querySelector('input[type="radio"]:not([disabled])');
+        if (firstActive) {
+          firstActive.checked = true;
+          updatePaymentPrices(firstActive.dataset.price);
+        }
+
+        // Bei Wechsel des Workshops Preis aktualisieren
+        list.querySelectorAll('input[type="radio"]').forEach(radio => {
+          radio.addEventListener('change', function() {
+            if (this.dataset.price) updatePaymentPrices(this.dataset.price);
+          });
+        });
+
       } catch(e) {
         document.getElementById('workshopList').innerHTML =
           '<p style="color:rgba(250,247,242,0.45);font-size:14px;text-align:center;padding:20px;">Termine konnten nicht geladen werden.<br>Bitte versuche es später erneut.</p>';
@@ -780,7 +801,9 @@
       const btn = document.getElementById('submitBtn');
       const data = new FormData(form);
       const zahlungsart = data.get('Zahlungsart');
-      const paypalUrl = 'https://www.paypal.me/MWollensak/45';
+      const selectedWorkshop = document.querySelector('input[name="Workshop"]:checked');
+      const preis = selectedWorkshop ? selectedWorkshop.dataset.price.replace(',', '.') : '45';
+      const paypalUrl = 'https://www.paypal.me/MWollensak/' + preis;
 
       btn.disabled = true;
       btn.textContent = 'Anmeldung wird gesendet …';
