@@ -212,6 +212,17 @@
 
     // ── Load ──
     async function loadWorkshops() {
+      // Zuerst localStorage prüfen – dort sind ungespeicherte Änderungen
+      const cached = localStorage.getItem('mala_workshops');
+      if (cached) {
+        try {
+          workshops = JSON.parse(cached);
+          renderList();
+          showToast('Zuletzt gespeicherter Stand geladen ✓');
+          return;
+        } catch(e) {}
+      }
+      // Fallback: von GitHub laden
       try {
         const res = await fetch('workshops.json?v=' + Date.now());
         workshops = await res.json();
@@ -219,6 +230,11 @@
         workshops = [];
       }
       renderList();
+    }
+
+    // ── Automatisch in localStorage speichern ──
+    function saveToLocal() {
+      localStorage.setItem('mala_workshops', JSON.stringify(workshops));
     }
 
     // ── Render ──
@@ -282,14 +298,17 @@
     // ── Actions ──
     function update(i, field, value) {
       workshops[i][field] = value;
+      saveToLocal();
     }
     function setStatus(i, status) {
       workshops[i].status = status;
+      saveToLocal();
       renderList();
     }
     function deleteWorkshop(i) {
       if (!confirm('Workshop wirklich löschen?')) return;
       workshops.splice(i, 1);
+      saveToLocal();
       renderList();
     }
     function addWorkshop() {
@@ -304,6 +323,7 @@
         duration: '3 Std.',
         status: 'active'
       });
+      saveToLocal();
       renderList();
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
