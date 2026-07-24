@@ -573,6 +573,8 @@
         Dein Platz wird nach deiner Anmeldung vorgemerkt.
       </div>
 
+      <div id="restForm" style="display:none;">
+
       <span class="section-label">2. Deine Angaben</span>
 
       <div class="form-group">
@@ -686,6 +688,8 @@
         Verbindlich anmelden →
       </button>
 
+      </div><!-- Ende restForm -->
+
     </form>
 
     <div class="success-msg" id="successMsg">
@@ -766,21 +770,17 @@
 
         // Preis in Zahlungsart automatisch aktualisieren
         function updatePaymentPrices(price) {
-          document.getElementById('price-paypal').textContent   = price + ' €';
-          document.getElementById('price-vor-ort').textContent  = price + ' €';
+          document.getElementById('price-paypal').textContent  = price + ' €';
+          document.getElementById('price-vor-ort').textContent = price + ' €';
         }
 
-        // Ersten aktiven Workshop vorauswählen & Preis setzen
-        const firstActive = list.querySelector('input[type="radio"]:not([disabled])');
-        if (firstActive) {
-          firstActive.checked = true;
-          updatePaymentPrices(firstActive.dataset.price);
-        }
-
-        // Bei Wechsel des Workshops Preis aktualisieren
+        // Bei Wechsel des Workshops Preis aktualisieren & Rest einblenden
         list.querySelectorAll('input[type="radio"]').forEach(radio => {
           radio.addEventListener('change', function() {
-            if (this.dataset.price) updatePaymentPrices(this.dataset.price);
+            if (this.dataset.price) {
+              updatePaymentPrices(this.dataset.price);
+              document.getElementById('restForm').style.display = 'block';
+            }
           });
         });
 
